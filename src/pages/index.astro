@@ -12,7 +12,7 @@ import Contact from "../components/contact/Contact.astro";
 
 const page = await WordpressServices.getPageBySlug("accueil");
 
-// Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
+Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
 ---
 
 <Layout title={page.title.rendered}>
