@@ -1,5 +1,5 @@
 export class WordpressServices {
-  public static async getPageBySLug(slug) {
+  public static async getPageBySlug(slug) {
     try {
       const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages?slug=${slug}`);
       const data = await res.json();

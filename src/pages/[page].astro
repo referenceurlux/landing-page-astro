@@ -1,0 +1,24 @@
+---
+import { WordpressServices } from "../data/wordpress";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/header/Header.astro";
+import Footer from "../components/footer/Footer.astro";
+export async function getStaticPaths() {
+  const menu = await WordpressServices.getPrimaryMenu();
+  return menu.map((data) => {
+    return {
+      params: { page: data.title },
+    };
+  });
+}
+const { page } = Astro.params;
+const currentPage = await WordpressServices.getPageBySlug(page);
+---
+
+<Layout title={page}>
+  <Header />
+  <main>
+    <h2>test</h2>
+  </main>
+  <Footer />
+</Layout>

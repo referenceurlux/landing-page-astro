@@ -10,7 +10,7 @@ import Cta from "../components/cta/Cta.astro";
 import Galerie from "../components/galerie/Galerie.astro";
 import Contact from "../components/contact/Contact.astro";
 
-const page = await WordpressServices.getPageBySLug("accueil");
+const page = await WordpressServices.getPageBySlug("accueil");
 
 Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
 ---
