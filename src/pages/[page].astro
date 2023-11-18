@@ -3,6 +3,13 @@ import { WordpressServices } from "../data/wordpress";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/footer/Footer.astro";
+import About from "../components/about/About.astro";
+import Contact from "../components/contact/Contact.astro";
+import Cta from "../components/cta/Cta.astro";
+import Galerie from "../components/galerie/Galerie.astro";
+import Hero from "../components/hero/Hero.astro";
+import Infos from "../components/infos/Infos.astro";
+export const prerender = true;
 export async function getStaticPaths() {
   const menu = await WordpressServices.getPrimaryMenu();
   return menu.map((data) => {
@@ -16,9 +23,10 @@ const currentPage = await WordpressServices.getPageBySlug(page);
 ---
 
 <Layout title={page}>
-  <Header />
-  <main>
-    <h2>test</h2>
-  </main>
-  <Footer />
-</Layout>
+  <Hero />
+  <About />
+  <Infos />
+  <Cta />
+  <Galerie />
+  <Contact />
+</Layout> 
