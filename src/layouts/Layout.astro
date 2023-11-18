@@ -1,0 +1,41 @@
+---
+import Header from "../components/header/Header.astro";
+import Footer from "../components/footer/Footer.astro";
+import { WordpressServices } from "../data/wordpress";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const options = await WordpressServices.getOptionsPage();
+const primaryColor = options.couleur_principale;
+const secondaryColor = options.couleur_secondaire;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body
+    style={{
+      "--primary-color": primaryColor,
+      "--secondary-color": secondaryColor,
+    }}
+    class="overflow-x-hidden"
+  >
+    <Header />
+    <slot />
+    <Footer />
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init();
+    </script>
+  </body>
+</html>

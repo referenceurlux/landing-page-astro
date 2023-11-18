@@ -1,0 +1,25 @@
+---
+import "@fontsource-variable/montserrat";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { WordpressServices } from "../data/wordpress";
+import Hero from "../components/hero/Hero.astro";
+import About from "../components/about/About.astro";
+import Infos from "../components/infos/Infos.astro";
+import Cta from "../components/cta/Cta.astro";
+import Galerie from "../components/galerie/Galerie.astro";
+import Contact from "../components/contact/Contact.astro";
+
+const page = await WordpressServices.getPageBySLug("accueil");
+
+Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
+---
+
+<Layout title={page.title.rendered}>
+  <Hero />
+  <About />
+  <Infos />
+  <Cta />
+  <Galerie />
+  <Contact />
+</Layout>

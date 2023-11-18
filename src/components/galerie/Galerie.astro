@@ -1,0 +1,36 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+const page = await WordpressServices.getPageBySLug("accueil");
+---
+
+<section class="py-20 relative">
+  <div class="container mx-auto">
+    <span class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase">{page.acf.gros_titre_galerie}</span>
+    <div class="font-montserrat font-semibold text-2xl md:text-5xl text-center mb-20">
+      <Fragment set:html={page.acf.petit_titre_galerie} />
+    </div>
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 md:col-span-8">
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie.url} alt={page.acf.image_1_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie.url} alt={page.acf.image_2_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie.url} alt={page.acf.image_3_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie.url} alt={page.acf.image_4_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie.url} alt={page.acf.image_5_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie.url} alt={page.acf.image_6_galerie.description}>
+      </div>
+      <div class="col-span-12 md:col-span-8">
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie.url} alt={page.acf.image_7_galerie.description}>
+      </div>
+    </div>
+  </div>
+</section>

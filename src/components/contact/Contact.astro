@@ -1,0 +1,108 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+const page = await WordpressServices.getPageBySLug("accueil");
+
+// if (typeof document !== "undefined") {
+//   const formulaire = document.querySelector<HTMLFormElement>("#contactForm");
+//   const Btn = document.querySelector(".sendBtn");
+//   if (formulaire) {
+//     Btn?.addEventListener("click", () => {
+//       formulaire.addEventListener("submit", (e) => {
+//         e.preventDefault();
+
+//         const formData = new FormData(formulaire);
+//         console.log(formData);
+
+//         fetch("http://landingpage.local/wp-json/wp/v2/forms", {
+//           method: "POST",
+//           body: formData,
+//         })
+//           .then((response) => response.json())
+//           .then((data) => console.log(data))
+//           .catch((error) => console.error("Erreur :", error));
+//       });
+//     });
+//   }
+// }
+---
+
+<section class="pt-20 pb-40 relative">
+  <div class="container mx-auto">
+    <span
+      class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase"
+      >{page.acf.gros_titre_contact}</span
+    >
+    <div
+      class="font-montserrat font-semibold text-2xl md:text-5xl text-center mb-20"
+    >
+      <Fragment set:html={page.acf.petit_titre_contact} />
+    </div>
+    <div>
+      <Fragment set:html={page.acf.shortcode_formulaire_contact} />
+    </div>
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 xl:col-span-6 xl:col-start-4">
+        <iframe class="h-[900px] xl:h-[700px]" src="https://pages.lu/wordpress/contact/" frameborder="0" width="100%" height=""></iframe>
+      </div>
+    </div>
+    <!-- <form id="contactForm">
+      <div class="grid grid-cols-12 gap-4 font-montserrat font-semibold">
+        <div class="col-span-3 col-start-4">
+          <input
+            class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
+            type="text"
+            id="nom"
+            name="nom"
+            placeholder="Nom"
+            required
+          />
+        </div>
+        <div class="col-span-3">
+          <input
+            class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
+            type="text"
+            id="prenom"
+            name="prenom"
+            placeholder="Prénom"
+            required
+          />
+        </div>
+        <div class="col-span-3 col-start-4">
+          <input
+            class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="col-span-3">
+          <input
+            class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
+            type="tel"
+            id="telephone"
+            name="telephone"
+            placeholder="Téléphone"
+            required
+          />
+        </div>
+        <div class="col-span-6 col-start-4">
+          <textarea
+            class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
+            id="message"
+            name="message"
+            placeholder="Message"
+            rows="5"
+            required></textarea>
+        </div>
+        <div class="col-span-2 col-start-6 mt-16">
+          <button
+            class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn"
+            type="submit"
+            value="Envoyer"></button>
+        </div>
+      </div>
+    </form> -->
+  </div>
+</section>

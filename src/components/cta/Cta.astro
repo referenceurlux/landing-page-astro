@@ -1,0 +1,17 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+const page = await WordpressServices.getPageBySLug("accueil");
+---
+
+<section class="py-28 md:py-40">
+  <div class="container mx-auto">
+    <div class="relative w-full h-auto py-28 px-16 lg:px-40 bg-[--primary-color] rounded-3xl flex flex-col justify-center items-center overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full bg-[--primary-color] z-2 opacity-80"></div>
+      <img class="absolute top-0 left-0 w-full h-full object-cover" src={page.acf.background_cta.url} alt={page.acf.background_cta.description}>
+      <div data-aos="fade-up" class="font-montserrat font-semibold text-2xl lg:text-5xl text-white text-center mb-8 z-3">
+        <Fragment set:html={page.acf.texte_cta} />
+      </div>
+      <a data-aos="fade-up" data-aos-delay="300" class="bg-white font-montserrat text-xs md:text-base text-[--primary-color] font-semibold py-4 px-8 md:px-16 rounded-full transition-all z-3" href="">{page.acf.bouton_cta}</a>
+    </div>
+  </div>
+</section>

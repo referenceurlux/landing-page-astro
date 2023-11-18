@@ -1,0 +1,97 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+
+const menu = await WordpressServices.getPrimaryMenu();
+const options = await WordpressServices.getOptionsPage();
+
+const logo = options.logo_de_la_landing_page;
+const phone = options.telephone;
+---
+
+<header class="py-4 fixed w-full bg-white z-10 border-b-2 font-montserrat">
+  <div class="container mx-auto">
+    <nav class="flex justify-between items-center">
+      <a class="z-10" href="/">
+        <img src={logo.url} alt={logo.description} />
+      </a>
+      <ul class="gap-8 hidden xl:flex">
+        {
+          menu.map((item) => (
+            <li class="hover:text-[--primary-color] transition-all">
+              <a href={item.title}>{item.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        class="bg-[--primary-color] hidden xl:block text-white font-semibold py-4 px-8 rounded-full transition-all"
+        href=`tel:${phone}`>{phone}</a
+      >
+      <button
+        class="relative block xl:hidden group z-10 menuBtn font-semibold uppercase group"
+      >
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          class="stroke-black open transition-all"
+        >
+          <path
+            fill=""
+            stroke=""
+            stroke-linecap="round"
+            stroke-width="1.5"
+            d="M4 7h3m13 0h-9m9 10h-3M4 17h9m-9-5h16"></path>
+        </svg>
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+          class="fill-black hidden close transition-all"
+        >
+          <path
+            fill=""
+            d="M512 0C229.232 0 0 229.232 0 512c0 282.784 229.232 512 512 512c282.784 0 512-229.216 512-512C1024 229.232 794.784 0 512 0zm0 961.008c-247.024 0-448-201.984-448-449.01c0-247.024 200.976-448 448-448s448 200.977 448 448s-200.976 449.01-448 449.01zm181.008-630.016c-12.496-12.496-32.752-12.496-45.248 0L512 466.752l-135.76-135.76c-12.496-12.496-32.752-12.496-45.264 0c-12.496 12.496-12.496 32.752 0 45.248L466.736 512l-135.76 135.76c-12.496 12.48-12.496 32.769 0 45.249c12.496 12.496 32.752 12.496 45.264 0L512 557.249l135.76 135.76c12.496 12.496 32.752 12.496 45.248 0c12.496-12.48 12.496-32.769 0-45.249L557.248 512l135.76-135.76c12.512-12.512 12.512-32.768 0-45.248z"
+          ></path>
+        </svg>
+      </button>
+      <div
+        class="menu-mobile h-screen w-screen bg-white absolute top-0 left-0 -translate-y-full transition-all"
+      >
+        <div
+          class="container mx-auto py-40 flex flex-col justify-center items-center gap-8"
+        >
+          <ul class="gap-8 flex xl:hidden text-xl uppercase">
+            {
+              menu.map((item) => (
+                <li class="hover:text-[--primary-color] transition-all">
+                  <a href={item.title}>{item.title}</a>
+                </li>
+              ))
+            }
+          </ul>
+          <a
+            class="bg-[--primary-color] block w-fit xl:hidden text-white font-semibold py-4 px-8 rounded-full transition-all"
+            href=`tel:${phone}`>{phone}</a
+          >
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.querySelector(".menuBtn");
+  const menuMobile = document.querySelector(".menu-mobile");
+  const open = document.querySelector(".open");
+  const close = document.querySelector(".close")
+  document.addEventListener("DOMContentLoaded", () => {
+    menuBtn?.addEventListener("click", () => {
+      menuMobile?.classList.toggle("-translate-y-full");
+      open?.classList.toggle('hidden');
+      close?.classList.toggle('hidden');
+    });
+  });
+</script>
