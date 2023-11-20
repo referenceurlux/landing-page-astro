@@ -1,5 +1,5 @@
 ---
-import { WordpressServices } from "../../../public/data/wordpress";
+import { WordpressServices } from "../../data/wordpress";
 interface Props {
   slug: string;
 }
@@ -18,4 +18,4 @@ const page = await WordpressServices.getPageBySlug(slug);
       <a data-aos="fade-up" data-aos-delay="300" class="bg-white font-montserrat text-xs md:text-base text-[--primary-color] font-semibold py-4 px-8 md:px-16 rounded-full transition-all z-3" href="">{page.acf.bouton_cta}</a>
     </div>
   </div>
-</section>../../pages/data/wordpress
+</section>

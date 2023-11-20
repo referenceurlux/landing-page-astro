@@ -3,7 +3,7 @@ export const prerender = true;
 import "@fontsource-variable/montserrat";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import { WordpressServices } from "../../public/data/wordpress";
+import { WordpressServices } from "../data/wordpress";
 import Hero from "../components/hero/Hero.astro";
 import About from "../components/about/About.astro";
 import Infos from "../components/infos/Infos.astro";
@@ -23,4 +23,3 @@ Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
 <Layout title="accueil">
   <Hero slug="accueil"/>
 </Layout>
-./data/wordpress
