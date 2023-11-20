@@ -19,12 +19,7 @@ const page = await WordpressServices.getPageBySlug(slug);
 
 Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
 ---
-<!-- 
-<Layout title={page.title.rendered}>
-  <Hero slug={page.slug} />
-  <About slug={page.slug} />
-  <Infos slug={page.slug} />
-  <Cta slug={page.slug} />
-  <Galerie slug={page.slug} />
-  <Contact slug={page.slug} />
-</Layout> -->
+
+<Layout title="accueil">
+  <Hero slug="accueil"/>
+</Layout>
