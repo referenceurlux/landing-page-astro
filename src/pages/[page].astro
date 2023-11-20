@@ -10,35 +10,36 @@ import Cta from "../components/cta/Cta.astro";
 import Galerie from "../components/galerie/Galerie.astro";
 import Hero from "../components/hero/Hero.astro";
 import Infos from "../components/infos/Infos.astro";
-// export async function getStaticPaths() {
-//   const menu = await WordpressServices.getPrimaryMenu();
-//   return menu.map((data) => {
-//     return {
-//       params: { page: data.title },
-//     };
-//   });
-// }
+export async function getStaticPaths() {
+  const menu = await WordpressServices.getPrimaryMenu();
+  return menu.map((data) => {
+    return {
+      params: { page: data.title },
+    };
+  });
+}
+const { page } = Astro.params;
 
-const menu = await WordpressServices.getPrimaryMenu();
-const currentPages = menu.map((data) => {
-  return {
-    slug: data.title,
-  };
-});
+// const menu = await WordpressServices.getPrimaryMenu();
+// const currentPages = menu.map((data) => {
+//   return {
+//     slug: data.title,
+//   };
+// });
 
 
 
-const page = currentPages.find((page) => page.slug === Astro.params.page);
-console.log(page);
+// const page = currentPages.find((page) => page.slug === Astro.params.page);
+// console.log(page);
 
-if (!page) return Astro.redirect("/404");
+// if (!page) return Astro.redirect("/404");
 ---
 
-<Layout title={page.slug}>
-  <Hero slug={page.slug} />
-  <About slug={page.slug} />
-  <Infos slug={page.slug} />
-  <Cta slug={page.slug} />
-  <Galerie slug={page.slug} />
-  <Contact slug={page.slug} />
+<Layout title={page}>
+  <Hero slug={page} />
+  <About slug={page} />
+  <Infos slug={page} />
+  <Cta slug={page} />
+  <Galerie slug={page} />
+  <Contact slug={page} />
 </Layout> 
