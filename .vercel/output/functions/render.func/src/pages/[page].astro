@@ -1,6 +1,6 @@
 ---
 import "@fontsource-variable/montserrat";
-import { WordpressServices } from "../data/wordpress";
+import { WordpressServices } from "../pages/data/wordpress";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header.astro";
 import Footer from "../components/footer/Footer.astro";
@@ -42,3 +42,4 @@ if (!page) return Astro.redirect("/404");
   <Galerie slug={page.slug} />
   <Contact slug={page.slug} />
 </Layout> 
+./data/wordpress
