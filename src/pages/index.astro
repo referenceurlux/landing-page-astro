@@ -11,16 +11,20 @@ import Cta from "../components/cta/Cta.astro";
 import Galerie from "../components/galerie/Galerie.astro";
 import Contact from "../components/contact/Contact.astro";
 
-const page = await WordpressServices.getPageBySlug("accueil");
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
 
 Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
 ---
-
+<!-- 
 <Layout title={page.title.rendered}>
-  <Hero />
-  <About />
-  <Infos />
-  <Cta />
-  <Galerie />
-  <Contact />
-</Layout>
+  <Hero slug={page.slug} />
+  <About slug={page.slug} />
+  <Infos slug={page.slug} />
+  <Cta slug={page.slug} />
+  <Galerie slug={page.slug} />
+  <Contact slug={page.slug} />
+</Layout> -->

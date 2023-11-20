@@ -1,6 +1,10 @@
 ---
 import { WordpressServices } from "../../data/wordpress";
-const page = await WordpressServices.getPageBySlug('accueil');
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
 ---
 
 <section class="pt-40 pb-40 md:pb-56">

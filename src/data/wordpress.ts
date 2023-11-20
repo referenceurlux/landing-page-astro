@@ -9,6 +9,16 @@ export class WordpressServices {
     }
   }
 
+  public static async getPageByID(id) {
+    try {
+      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages?slug=${slug}`);
+      const data = await res.json();
+      return data[0];
+    } catch (error) {
+      console.error("Une erreur s'est produite lors de la récupération des données :", error);
+    }
+  }
+
   public static async getPrimaryMenu() {
     try {
       const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/menu`);
