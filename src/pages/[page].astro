@@ -1,51 +1,45 @@
 ---
-// import "@fontsource-variable/montserrat";
+export const prerender = true;
+import "@fontsource-variable/montserrat";
 import { WordpressServices } from "../data/wordpress";
-// import Layout from "../layouts/Layout.astro";
-// import Header from "../components/header/Header.astro";
-// import Footer from "../components/footer/Footer.astro";
-// import About from "../components/about/About.astro";
-// import Contact from "../components/contact/Contact.astro";
-// import Cta from "../components/cta/Cta.astro";
-// import Galerie from "../components/galerie/Galerie.astro";
-// import Hero from "../components/hero/Hero.astro";
-// import Infos from "../components/infos/Infos.astro";
-// export async function getStaticPaths() {
-//   const menu = await WordpressServices.getPrimaryMenu();
-//   return menu.map((data) => {
-//     return {
-//       params: { page: data.title },
-//     };
-//   });
-// }
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/header/Header.astro";
+import Footer from "../components/footer/Footer.astro";
+import About from "../components/about/About.astro";
+import Contact from "../components/contact/Contact.astro";
+import Cta from "../components/cta/Cta.astro";
+import Galerie from "../components/galerie/Galerie.astro";
+import Hero from "../components/hero/Hero.astro";
+import Infos from "../components/infos/Infos.astro";
+export async function getStaticPaths() {
+  const menu = await WordpressServices.getPrimaryMenu();
+  return menu.map((data) => {
+    return {
+      params: { page: data.title },
+    };
+  });
+}
 
-// const menu = await WordpressServices.getPrimaryMenu();
-// const currentPages = menu.map((data) => {
-//   return {
-//     slug: data.title,
-//   };
-// });
-
-
-
-// const page = currentPages.find((page) => page.slug === Astro.params.page);
-// console.log(page);
-
-// if (!page) return Astro.redirect("/404");
-
-const slug = await WordpressServices.getPrimaryMenu();
-console.log(slug);
+const menu = await WordpressServices.getPrimaryMenu();
+const currentPages = menu.map((data) => {
+  return {
+    slug: data.title,
+  };
+});
 
 
 
+const page = currentPages.find((page) => page.slug === Astro.params.page);
+console.log(page);
+
+if (!page) return Astro.redirect("/404");
 ---
 
-<!-- <Layout title={page.slug}>
+<Layout title={page.slug}>
   <Hero slug={page.slug} />
   <About slug={page.slug} />
   <Infos slug={page.slug} />
   <Cta slug={page.slug} />
   <Galerie slug={page.slug} />
   <Contact slug={page.slug} />
-</Layout>  -->
-<h1>Test</h1>
+</Layout> 

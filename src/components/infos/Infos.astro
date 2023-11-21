@@ -1,11 +1,11 @@
 ---
-import { WordpressServices } from "../../data/wordpress";
+import { WordpressServices } from "../../data/wordpress.ts";
 interface Props {
   slug: string;
 }
 const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
-const services  = page.acf.services
+const services  = page.acf.services;
 ---
 
 <section class="py-28 md:py-40 bg-[--secondary-color]">
