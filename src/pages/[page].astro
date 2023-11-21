@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import "@fontsource-variable/montserrat";
 import { WordpressServices } from "../data/wordpress";
 import Layout from "../layouts/Layout.astro";
@@ -11,14 +10,14 @@ import Cta from "../components/cta/Cta.astro";
 import Galerie from "../components/galerie/Galerie.astro";
 import Hero from "../components/hero/Hero.astro";
 import Infos from "../components/infos/Infos.astro";
-export async function getStaticPaths() {
-  const menu = await WordpressServices.getPrimaryMenu();
-  return menu.map((data) => {
-    return {
-      params: { page: data.title },
-    };
-  });
-}
+// export async function getStaticPaths() {
+//   const menu = await WordpressServices.getPrimaryMenu();
+//   return menu.map((data) => {
+//     return {
+//       params: { page: data.title },
+//     };
+//   });
+// }
 
 const menu = await WordpressServices.getPrimaryMenu();
 const currentPages = menu.map((data) => {
