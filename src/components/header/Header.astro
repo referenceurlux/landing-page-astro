@@ -1,8 +1,7 @@
 ---
 import { WordpressServices } from "../../data/wordpress";
 
-// const menu = await WordpressServices.getPrimaryMenu();
-const menu = await WordpressServices.getPages();
+const menu = await WordpressServices.getPrimaryMenu();
 const options = await WordpressServices.getOptionsPage();
 
 const logo = options.logo_de_la_landing_page;
