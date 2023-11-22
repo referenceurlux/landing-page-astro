@@ -7,9 +7,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const options = await WordpressServices.getOptionsPage();
-const primaryColor = options.couleur_principale;
-const secondaryColor = options.couleur_secondaire;
+const page = await WordpressServices.getPageBySlug(title);
+const primaryColor = page.acf.couleur_principale;
+const secondaryColor = page.acf.couleur_secondaire;
 ---
 
 <!doctype html>
@@ -30,9 +30,7 @@ const secondaryColor = options.couleur_secondaire;
     }}
     class="overflow-x-hidden"
   >
-    <Header />
     <slot />
-    <Footer />
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline>
       AOS.init();

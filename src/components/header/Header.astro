@@ -2,10 +2,16 @@
 import { WordpressServices } from "../../data/wordpress";
 
 const menu = await WordpressServices.getPrimaryMenu();
-const options = await WordpressServices.getOptionsPage();
+interface Props {
+  slug: string;
+}
 
-const logo = options.logo_de_la_landing_page;
-const phone = options.telephone;
+const { slug } = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+
+
+const logo = page.acf.logo_de_la_landing_page;
+const phone = page.acf.telephone;
 ---
 
 <header class="py-4 fixed w-full bg-white z-10 border-b-2 font-montserrat">

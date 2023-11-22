@@ -2,16 +2,21 @@
 import { WordpressServices } from "../../data/wordpress";
 
 const menu = await WordpressServices.getPrimaryMenu();
-const options = await WordpressServices.getOptionsPage();
+interface Props {
+  slug: string;
+}
 
-const logo = options.logo_footer;
-const phone = options.telephone;
-const texte = options.texte_footer;
-const email = options.email;
-const adresse = options.adresse;
-const facebook = options.facebook;
-const instagram = options.instagram;
-const linkedin = options.linkedin;
+const { slug } = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+
+const logo = page.acf.logo_footer;
+const phone = page.acf.telephone;
+const texte = page.acf.texte_footer;
+const email = page.acf.email;
+const adresse = page.acf.adresse;
+const facebook = page.acf.facebook;
+const instagram = page.acf.instagram;
+const linkedin = page.acf.linkedin;
 ---
 
 <footer class="bg-black text-white font-montserrat overflow-x-hidden">

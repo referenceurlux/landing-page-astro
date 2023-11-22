@@ -5,6 +5,7 @@ interface Props {
 }
 const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
 ---
 
 <section class="py-20 relative">
@@ -14,25 +15,25 @@ const page = await WordpressServices.getPageBySlug(slug);
       <Fragment set:html={page.acf.petit_titre_galerie} />
     </div>
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-12 md:col-span-8">
+      <div class={`col-span-12 md:col-span-8 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie.url} alt={page.acf.image_1_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie.url} alt={page.acf.image_2_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie.url} alt={page.acf.image_3_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie.url} alt={page.acf.image_4_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie.url} alt={page.acf.image_5_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-4">
+      <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie.url} alt={page.acf.image_6_galerie.description}>
       </div>
-      <div class="col-span-12 md:col-span-8">
+      <div class={`col-span-12 md:col-span-8 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie.url} alt={page.acf.image_7_galerie.description}>
       </div>
     </div>

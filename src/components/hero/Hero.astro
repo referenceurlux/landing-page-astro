@@ -6,6 +6,9 @@ interface Props {
 const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 const bandeau = page.acf.bandeau_hero;
+const color = page.acf.couleur_principale;
+console.log(color);
+
 ---
 
 <section class="lg:h-screen w-full relative">

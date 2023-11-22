@@ -29,16 +29,16 @@ const currentPages = menu.map((data) => {
 
 
 const page = currentPages.find((page) => page.slug === Astro.params.page);
-console.log(page);
 
 if (!page) return Astro.redirect("/404");
 ---
-
 <Layout title={page.slug}>
+  <Header slug={page.slug} />
   <Hero slug={page.slug} />
   <About slug={page.slug} />
   <Infos slug={page.slug} />
   <Cta slug={page.slug} />
   <Galerie slug={page.slug} />
   <Contact slug={page.slug} />
-</Layout> 
+  <Footer slug={page.slug} />
+</Layout>
