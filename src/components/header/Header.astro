@@ -1,7 +1,8 @@
 ---
 import { WordpressServices } from "../../data/wordpress";
 
-const menu = await WordpressServices.getPrimaryMenu();
+// const menu = await WordpressServices.getPrimaryMenu();
+const menu = await WordpressServices.getPages();
 const options = await WordpressServices.getOptionsPage();
 
 const logo = options.logo_de_la_landing_page;
@@ -67,7 +68,7 @@ const phone = options.telephone;
             {
               menu.map((item) => (
                 <li class="hover:text-[--primary-color] transition-all">
-                  <a href={item.title}>{item.title}</a>
+                  <a href={item.slug}>{item.title}</a>
                 </li>
               ))
             }

@@ -9,10 +9,10 @@ export class WordpressServices {
     }
   }
 
-  public static async getPageByID(id) {
+  public static async getPages() {
     try {
-      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages?slug=${slug}`);
-      const [data] = await res.json();
+      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages`);
+      const data = await res.json();
       return data;
     } catch (error) {
       console.error("Une erreur s'est produite lors de la récupération des données :", error);
