@@ -7,10 +7,7 @@ const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 const bandeau = page.acf.bandeau_hero;
 const color = page.acf.couleur_principale;
-console.log(color);
-
 ---
-
 <section class="lg:h-screen w-full relative">
   <img class="absolute w-full h-full object-cover aspect-video" src={page.acf.background_hero.url} alt={page.acf.background_hero.description}>
   <div class="absolute w-full h-3/4 top-0 left-0 bg-gradient-to-b from-black to-transparent z-2"></div>

@@ -10,6 +10,8 @@ import Cta from "../components/cta/Cta.astro";
 import Galerie from "../components/galerie/Galerie.astro";
 import Hero from "../components/hero/Hero.astro";
 import Infos from "../components/infos/Infos.astro";
+import Hero3 from "../components/hero/Hero3.astro";
+import HeroSwitcher from "../components/hero/HeroSwitcher.astro";
 // export async function getStaticPaths() {
 //   const menu = await WordpressServices.getPrimaryMenu();
 //   return menu.map((data) => {
@@ -26,15 +28,16 @@ const currentPages = menu.map((data) => {
   };
 });
 
-
-
 const page = currentPages.find((page) => page.slug === Astro.params.page);
+const currentPage = await WordpressServices.getPageBySlug(page.slug);
+const template = currentPage.acf.template;
 
 if (!page) return Astro.redirect("/404");
 ---
+
 <Layout title={page.slug}>
   <Header slug={page.slug} />
-  <Hero slug={page.slug} />
+  <HeroSwitcher slug={page.slug} />
   <About slug={page.slug} />
   <Infos slug={page.slug} />
   <Cta slug={page.slug} />

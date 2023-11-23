@@ -12,9 +12,10 @@ const page = await WordpressServices.getPageBySlug(slug);
 
 const logo = page.acf.logo_de_la_landing_page;
 const phone = page.acf.telephone;
+const template = page.acf.template;
 ---
 
-<header class="py-4 fixed w-full bg-white z-10 border-b-2 font-montserrat">
+<header class="py-4 fixed w-full bg-white z-10  font-montserrat">
   <div class="container mx-auto">
     <nav class="flex justify-between items-center">
       <a class="z-10" href="/">
@@ -30,7 +31,7 @@ const phone = page.acf.telephone;
         }
       </ul>
       <a
-        class="bg-[--primary-color] hidden xl:block text-white font-semibold py-4 px-8 rounded-full transition-all"
+        class={`bg-[--primary-color] hidden xl:block text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} transition-all`}
         href=`tel:${phone}`>{phone}</a
       >
       <button
@@ -79,7 +80,7 @@ const phone = page.acf.telephone;
             }
           </ul>
           <a
-            class="bg-[--primary-color] block w-fit xl:hidden text-white font-semibold py-4 px-8 rounded-full transition-all"
+            class={`bg-[--primary-color] block w-fit xl:hidden text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'}  transition-all`}
             href=`tel:${phone}`>{phone}</a
           >
         </div>

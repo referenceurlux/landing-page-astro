@@ -15,7 +15,7 @@ const template = page.acf.template;
       <Fragment set:html={page.acf.petit_titre_galerie} />
     </div>
     <div class="grid grid-cols-12 gap-4">
-      <div class={`col-span-12 md:col-span-8 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
+      <div class={`col-span-12 md:col-span-8 overflow-hidden ${template === 'Template 3' ? 'rounded-3xl' : ''}`}>
         <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie.url} alt={page.acf.image_1_galerie.description}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden ${template === 'Template 2' ? 'rounded-3xl' : ''}`}>
