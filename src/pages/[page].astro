@@ -3,15 +3,15 @@ import "@fontsource-variable/montserrat";
 import { WordpressServices } from "../data/wordpress";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/header/Header.astro";
-import Footer from "../components/footer/Footer.astro";
-import About from "../components/about/About.astro";
-import Contact from "../components/contact/Contact.astro";
-import Cta from "../components/cta/Cta.astro";
-import Galerie from "../components/galerie/Galerie.astro";
-import Hero from "../components/hero/Hero.astro";
-import Infos from "../components/infos/Infos.astro";
-import Hero3 from "../components/hero/Hero3.astro";
 import HeroSwitcher from "../components/hero/HeroSwitcher.astro";
+import ValeursSwitcher from "../components/valeurs/ValeursSwitcher.astro";
+import AboutSwitcher from "../components/about/AboutSwitcher.astro";
+import InfosSwitcher from "../components/infos/InfosSwitcher.astro";
+import CtaSwitcher from "../components/cta/CtaSwitcher.astro";
+import GalerieSwitcher from "../components/galerie/GalerieSwitcher.astro";
+import NumbersSwitcher from "../components/numbers/NumbersSwitcher.astro";
+import ContactSwitcher from "../components/contact/ContactSwitcher.astro";
+import FooterSwitcher from "../components/footer/FooterSwitcher.astro";
 // export async function getStaticPaths() {
 //   const menu = await WordpressServices.getPrimaryMenu();
 //   return menu.map((data) => {
@@ -38,10 +38,12 @@ if (!page) return Astro.redirect("/404");
 <Layout title={page.slug}>
   <Header slug={page.slug} />
   <HeroSwitcher slug={page.slug} />
-  <About slug={page.slug} />
-  <Infos slug={page.slug} />
-  <Cta slug={page.slug} />
-  <Galerie slug={page.slug} />
-  <Contact slug={page.slug} />
-  <Footer slug={page.slug} />
+  <ValeursSwitcher slug={page.slug} />
+  <AboutSwitcher slug={page.slug} />
+  <InfosSwitcher slug={page.slug} />
+  <CtaSwitcher slug={page.slug} />
+  <GalerieSwitcher slug={page.slug} />
+  <NumbersSwitcher slug={page.slug} />
+  <ContactSwitcher slug={page.slug} />
+  <FooterSwitcher slug={page.slug} />
 </Layout>

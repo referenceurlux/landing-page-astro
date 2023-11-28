@@ -1,0 +1,14 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+import Galerie from "./Galerie.astro";
+import Galerie3 from "./Galerie3.astro";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
+---
+
+{template === "Template 1" || template === "Template 2" ? <Galerie slug={page.slug} /> : null}
+{template === "Template 3" || template === "Template 4" ? <Galerie3 slug={page.slug} /> : null}

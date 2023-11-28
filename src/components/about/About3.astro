@@ -1,0 +1,25 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+---
+
+<section class="pt-40">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-4 relative">
+      <div data-aos="fade-up" class="col-span-12 lg:col-span-6 font-montserrat flex flex-col justify-center items-start">
+        <h2 class="font-bold text-3xl lg:text-5xl mb-8 uppercase">{page.acf.titre_about_3}</h2>
+        <div class="font-light leading-7 mb-16 text-lg">
+          <Fragment set:html={page.acf.texte_about_3} />
+        </div>
+        <a class="bg-[--primary-color] font-montserrat text-white md:text-lg font-semibold py-4 px-16 rounded-xl transition-all z-3" href="">{page.acf.bouton_about_3}</a>
+      </div>
+      <div class="col-span-12 lg:col-span-5 lg:col-end-13 relative mb-20 lg:mb-0">
+        <img data-aos="zoom-in-up" class="w-full h-full object-cover aspect-video lg:aspect-square relative rounded-3xl" src={page.acf.image_about_3.url} alt={page.acf.image_about_3.description}>
+      </div>
+    </div>
+  </div>
+</section>

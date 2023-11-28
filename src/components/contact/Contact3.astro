@@ -1,0 +1,32 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+---
+
+<section class="py-28 md:py-40">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-4 relative bg-[--primary-color] rounded-3xl overflow-hidden py-24">
+      <div class="absolute top-0 left-0 w-full h-full bg-[--primary-color] z-1 opacity-80"></div>
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[--primary-color] to-transparent z-1"></div>
+      <img class="absolute top-0 left-0 w-full h-full object-cover z-0" src={page.acf.background_cta.url} alt={page.acf.background_cta.description}>
+      <div class="col-span-4 col-start-2 z-1 font-montserrat text-white">
+        <h2 class="font-bold uppercase text-3xl lg:text-5xl mb-6">{page.acf.titre_contact_3}</h2>
+        <p class="text-lg">{page.acf.texte_contact_3}</p>
+      </div>
+      <div class="col-span-5 col-end-12 z-1 font-montserrat font-medium text-[--secondary-color]">
+        <form class="flex flex-wrap justify-between gap-4" action="" method="post">
+          <input class="p-5 w-[48%] rounded-xl outline-none" type="text" name="nom" placeholder="Nom" id="">
+          <input class="p-5 w-[48%] rounded-xl outline-none" type="text" name="prenom" placeholder="Prénom" id="">
+          <input class="p-5 w-[48%] rounded-xl outline-none" type="email" name="email" placeholder="Email" id="">
+          <input class="p-5 w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="">
+          <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="" cols="30" rows="3" placeholder="Message"></textarea>
+          <button class="rounded-xl border-white bg-transparent border text-white font-semibold py-4 px-12 mt-6 hover:bg-white hover:text-[--primary-color] transition-all" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

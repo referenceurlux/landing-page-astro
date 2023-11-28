@@ -1,0 +1,19 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+---
+
+<section class="pt-40">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-4 relative">
+      <div class="col-span-12 lg:col-span-5 relative mb-20 lg:mb-0">
+        <img data-aos="zoom-in-up" class="w-full h-full object-cover aspect-video lg:aspect-square relative z-1" src={page.acf.grande_image_about.url} alt={page.acf.grande_image_about.description}>
+        <img class="absolute z-2 bottom-0 right-1/2 lg:right-0 w-1/2 h-1/2 object-cover aspect-square translate-x-1/2 lg:translate-x-16 translate-y-16 drop-shadow-2xl" src={page.acf.petite_image_about.url} alt={page.acf.petite_image_about.description}>
+      </div>
+    </div>
+  </div>
+</section>

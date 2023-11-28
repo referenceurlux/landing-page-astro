@@ -1,0 +1,13 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+import Infos from "./Infos.astro";
+import Infos3 from "./Infos3.astro";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
+---
+{template === "Template 1" || template === "Template 2" ? <Infos slug={page.slug} /> : null}
+{template === "Template 3" || template === "Template 4" ? <Infos3 slug={page.slug} /> : null}

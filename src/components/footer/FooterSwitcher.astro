@@ -1,0 +1,14 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+import Footer from "./Footer.astro";
+import Footer3 from "./Footer3.astro";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
+---
+
+{template === "Template 1" || template === "Template 2" ? <Footer slug={page.slug} /> : null}
+{template === "Template 3" || template === "Template 4" ? <Footer3 slug={page.slug} /> : null}

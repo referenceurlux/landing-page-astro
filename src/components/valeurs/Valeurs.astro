@@ -1,0 +1,73 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const valeurs = page.acf.liste_valeurs;
+---
+
+<section class="pt-40">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-8 relative">
+      <div
+        class="col-span-12 lg:col-span-3 lg:col-start-1 row-span-full translate-x-1/4 relative"
+      >
+        <img
+          data-aos="zoom-in-up"
+          class="w-full h-full object-cover relative rounded-3xl"
+          src={page.acf.image_gauche_3.url}
+          alt={page.acf.image_gauche_3.description}
+        />
+      </div>
+      <div
+        class="col-span-12 lg:col-span-3 lg:col-start-5 row-span-full relative"
+      >
+        <img
+          data-aos="zoom-in-up"
+          class="w-full h-full object-cover relative rounded-3xl"
+          src={page.acf.image_droite_3.url}
+          alt={page.acf.image_droite_3.description}
+        />
+      </div>
+      <div
+        class="col-span-12 lg:col-span-5 lg:col-end-13 row-span-full relative flex gap-4 -translate-x-[15%] flex-col justify-center"
+      >
+        {
+          valeurs.map((valeur) => (
+            <div class="font-montserrat flex items-center gap-4">
+              <div class="relative bg-black rounded-xl w-28 h-28 p-4 flex justify-center items-center">
+                <img
+                  class="object-cover"
+                  src={valeur.icone.url}
+                  alt={valeur.icone.description}
+                />
+                <div class="absolute w-6 h-6 bg-[--primary-color] rounded-full -translate-y-full translate-x-full flex justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11.784"
+                    height="7.996"
+                    viewBox="0 0 11.784 7.996"
+                  >
+                    <path
+                      id="check-light_1_"
+                      data-name="check-light (1)"
+                      d="M11.712,96.172a.422.422,0,0,1,0,.595l-7.156,7.156a.422.422,0,0,1-.595,0L.172,100.135a.42.42,0,0,1,.595-.595l3.491,3.491,6.859-6.859A.422.422,0,0,1,11.712,96.172Z"
+                      transform="translate(-0.05 -96.05)"
+                      fill="#fff"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="w-3/4">
+                <h5 class="font-semibold text-2xl">{valeur.titre}</h5>
+                <span>{valeur.description}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

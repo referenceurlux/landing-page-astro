@@ -1,0 +1,14 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+import Cta from "./Cta.astro";
+import Cta3 from "./Cta3.astro";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
+---
+
+{template === "Template 1" || template === "Template 2" ? <Cta slug={page.slug} /> : null}
+{template === "Template 3" || template === "Template 4" ? <Cta3 slug={page.slug} /> : null}
