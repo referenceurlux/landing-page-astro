@@ -4,9 +4,10 @@ import Footer from "../components/footer/Footer.astro";
 import { WordpressServices } from "../data/wordpress";
 interface Props {
   title: string;
+  siteName: string;
 }
 
-const { title } = Astro.props;
+const { title, siteName } = Astro.props;
 const page = await WordpressServices.getPageBySlug(title);
 const primaryColor = page.acf.couleur_principale;
 const secondaryColor = page.acf.couleur_secondaire;
@@ -21,7 +22,7 @@ const secondaryColor = page.acf.couleur_secondaire;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{siteName}</title>
   </head>
   <body
     style={{

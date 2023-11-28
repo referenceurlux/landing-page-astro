@@ -1,25 +1,51 @@
 ---
-export const prerender = true;
 import "@fontsource-variable/montserrat";
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import { WordpressServices } from "../data/wordpress";
-import Hero from "../components/hero/Hero.astro";
-import About from "../components/about/About.astro";
-import Infos from "../components/infos/Infos.astro";
-import Cta from "../components/cta/Cta.astro";
-import Galerie from "../components/galerie/Galerie.astro";
-import Contact from "../components/contact/Contact.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/header/Header.astro";
+import HeroSwitcher from "../components/hero/HeroSwitcher.astro";
+import ValeursSwitcher from "../components/valeurs/ValeursSwitcher.astro";
+import AboutSwitcher from "../components/about/AboutSwitcher.astro";
+import InfosSwitcher from "../components/infos/InfosSwitcher.astro";
+import CtaSwitcher from "../components/cta/CtaSwitcher.astro";
+import GalerieSwitcher from "../components/galerie/GalerieSwitcher.astro";
+import NumbersSwitcher from "../components/numbers/NumbersSwitcher.astro";
+import ContactSwitcher from "../components/contact/ContactSwitcher.astro";
+import FooterSwitcher from "../components/footer/FooterSwitcher.astro";
+// export async function getStaticPaths() {
+//   const menu = await WordpressServices.getPrimaryMenu();
+//   return menu.map((data) => {
+//     return {
+//       params: { page: data.title },
+//     };
+//   });
+// }
 
-interface Props {
-  slug: string;
-}
-const {slug} = Astro.props;
-const page = await WordpressServices.getPageBySlug(slug);
+const menu = await WordpressServices.getPrimaryMenu();
+const currentPages = menu.map((data) => {
+  return {
+    slug: data.title,
+  };
+});
 
-Astro.response.headers.set('Cache-Control','max-age=600, must-revalidate');
+const page = currentPages.find((page) => page.slug === Astro.params.page);
+const currentPage = await WordpressServices.getPageBySlug(page.slug);
+const clientName = currentPage.acf.nom_du_client
+
+// const template = currentPage.acf.template;
+
+if (!page) return Astro.redirect("/404");
 ---
 
-<Layout title="accueil">
-  <Hero slug="accueil"/>
+<Layout title={page.slug} siteName={clientName}>
+  <Header slug={page.slug} />
+  <HeroSwitcher slug={page.slug} />
+  <ValeursSwitcher slug={page.slug} />
+  <AboutSwitcher slug={page.slug} />
+  <InfosSwitcher slug={page.slug} />
+  <CtaSwitcher slug={page.slug} />
+  <GalerieSwitcher slug={page.slug} />
+  <NumbersSwitcher slug={page.slug} />
+  <ContactSwitcher slug={page.slug} />
+  <FooterSwitcher slug={page.slug} />
 </Layout>

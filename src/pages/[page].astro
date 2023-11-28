@@ -30,12 +30,14 @@ const currentPages = menu.map((data) => {
 
 const page = currentPages.find((page) => page.slug === Astro.params.page);
 const currentPage = await WordpressServices.getPageBySlug(page.slug);
-const template = currentPage.acf.template;
+const clientName = currentPage.acf.nom_du_client
+
+// const template = currentPage.acf.template;
 
 if (!page) return Astro.redirect("/404");
 ---
 
-<Layout title={page.slug}>
+<Layout title={page.slug} siteName={clientName}>
   <Header slug={page.slug} />
   <HeroSwitcher slug={page.slug} />
   <ValeursSwitcher slug={page.slug} />

@@ -9,7 +9,6 @@ interface Props {
 const { slug } = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 
-
 const logo = page.acf.logo_de_la_landing_page;
 const phone = page.acf.telephone;
 const template = page.acf.template;
