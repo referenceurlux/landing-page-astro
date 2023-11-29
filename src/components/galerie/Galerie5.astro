@@ -1,0 +1,45 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const template = page.acf.template;
+---
+
+<section class=" py-24 lg:py-40 relative">
+  <div class="container mx-auto">
+    <h2 class="font-montserrat text-3xl text-[--primary-color] lg:w-1/3 lg:text-5xl mb-8 mx-auto font-semibold text-center">{page.acf.titre_galerie_5}</h2>
+    <p class="font-montserrat text-center lg:w-1/3 mx-auto mb-16">{page.acf.texte_galerie_5}</p>
+    <div class="grid grid-cols-12 gap-4">
+      <div class={`col-span-12 md:col-span-5 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie_5.url} alt={page.acf.image_1_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-5 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_2_galerie_5.url} alt={page.acf.image_2_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-2 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_3_galerie_5.url} alt={page.acf.image_3_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-4 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_4_galerie_5.url} alt={page.acf.image_4_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-4 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_5_galerie_5.url} alt={page.acf.image_5_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-4 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_6_galerie_5.url} alt={page.acf.image_6_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-2 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie_5.url} alt={page.acf.image_7_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-5 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_8_galerie_5.url} alt={page.acf.image_8_galerie_5.description}>
+      </div>
+      <div class={`col-span-12 md:col-span-5 overflow-hidden `}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_8_galerie_5.url} alt={page.acf.image_8_galerie_5.description}>
+      </div>
+    </div>
+  </div>
+</section>

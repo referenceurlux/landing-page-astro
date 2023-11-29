@@ -9,10 +9,10 @@ const bandeau = page.acf.bandeau_hero;
 const color = page.acf.couleur_principale;
 ---
 
-<section class="lg:h-screen w-full relative pt-24">
+<section class="lg:h-screen w-full relative pt-32 lg:pt-24">
   <div class="container mx-auto h-full flex items-center">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-span-6 flex flex-col justify-center items-start">
+      <div class="col-span-12 lg:col-span-6 flex flex-col justify-center items-start mb-8 mg:mb-0">
         <div
           data-aos="fade-up"
           class="text-3xl xl:text-6xl text-black uppercase z-3 font-bold font-montserrat mb-4"
@@ -20,27 +20,27 @@ const color = page.acf.couleur_principale;
           <Fragment set:html={page.acf.titre_hero_3} />
         </div>
         <h4
-          class="font-montserrat font-medium uppercase text-[--primary-color] text-xl xl:text-3xl mb-8"
+          class="font-montserrat font-medium uppercase text-[--primary-color] text-base xl:text-3xl mb-8"
         >
           {page.acf.accroche_hero_3}
         </h4>
-        <div class="font-montserrat text-lg mb-12 w-4/5">
+        <div class="font-montserrat text-base lg:text-lg mb-12 lg:w-4/5">
           <Fragment set:html={page.acf.texte_hero_3} />
         </div>
         <a
           data-aos="fade-up"
           data-aos-delay="300"
-          class="bg-[--primary-color] font-montserrat text-white font-semibold py-4 px-16 rounded-xl transition-all z-3"
+          class="bg-[--primary-color] font-montserrat text-white font-semibold text-sm lg:text-base py-4 px-16 rounded-xl transition-all z-3"
           href="">{page.acf.cta_hero_3}</a
         >
       </div>
-      <div class="col-span-5 col-end-13 background-hero-3 relative">
+      <div class="col-span-12 lg:col-span-5 lg:col-end-13 background-hero-3 relative">
         <img
           class="w-full h-full object-cover rounded-3xl"
           src={page.acf.background_hero_3.url}
           alt={page.acf.background_hero_3.description}
         />
-        <button class="bg-[--primary-color] p-8 rounded-3xl absolute bottom-0 right-0 translate-x-1/3 -translate-y-1/2">
+        <button class="bg-[--primary-color] hidden lg:block p-8 rounded-3xl absolute bottom-0 right-0 translate-x-1/3 -translate-y-1/2">
           <svg class="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.428 48.185">
             <path id="arrow-up-long-thin" d="M47.313.189a.739.739,0,0,0-1.04,0L32.289,14.174a.735.735,0,0,0,1.04,1.04L46.053,2.489V46.347a.736.736,0,1,0,1.472,0V2.489L60.249,15.222a.735.735,0,1,0,1.04-1.04L47.3.2Z" transform="translate(62.003 47.584) rotate(180)"/>
           </svg>          

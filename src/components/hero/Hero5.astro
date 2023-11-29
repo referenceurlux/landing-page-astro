@@ -9,16 +9,16 @@ const bandeau = page.acf.bandeau_hero_5;
 const color = page.acf.couleur_principale;
 ---
 
-<section class="lg:h-screen w-full relative pt-24">
+<section id="hero5" class="lg:h-screen w-full relative pt-24">
   <div class="container mx-auto h-full flex items-center relative">
     <div class="grid grid-cols-12 gap-4">
       <div
-        class="col-span-5 col-start-1 flex flex-col justify-center items-start relative row-span-full h-full z-2"
+        class="col-span-12 lg:col-span-5 lg:col-start-1 flex flex-col justify-center items-start relative lg:row-span-full h-full z-2"
       >
-        <div class="backdrop-blur-lg py-16 pr-12 bg-white/20">
+        <div class="lg:backdrop-blur-lg py-16 pr-12 bg-white/20">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="fill-[--primary-color] absolute top-0 left-0 translate-x-full -translate-y-1/2"
+            class="hidden lg:block fill-[--primary-color] absolute top-0 left-0 translate-x-full -translate-y-1/2"
             width="76"
             height="94"
             viewBox="0 0 76 94"
@@ -247,18 +247,18 @@ const color = page.acf.couleur_principale;
           >
             <Fragment set:html={page.acf.titre_hero_5} />
           </div>
-          <div class="font-montserrat text-lg mb-8 w-4/5">
+          <div class="font-montserrat text-sm lg:text-lg mb-8 lg:w-4/5">
             <Fragment set:html={page.acf.texte_hero_5} />
           </div>
           <a
             data-aos="fade-up"
             data-aos-delay="300"
-            class="font-montserrat text-[--primary-color] border-2 border-[--primary-color] font-semibold py-4 px-16 rounded-full transition-all z-3"
+            class="font-montserrat text-sm lg:text-base text-[--primary-color] border-2 border-[--primary-color] font-semibold py-4 px-16 rounded-full transition-all z-3"
             href="">{page.acf.cta_hero_5}</a
           >
         </div>
       </div>
-      <div class="col-span-9 col-end-13 row-span-full">
+      <div class="col-span-12 lg:col-span-9 lg:col-end-13 lg:row-span-full">
         <div class="h-[90%] relative">
           <button
           class="bg-white/20 p-8 absolute bottom-0 right-0 backdrop-blur-lg"
@@ -285,9 +285,9 @@ const color = page.acf.couleur_principale;
   </div>
 </section>
 <section class="bg-[--primary-color]">
-  <div class="container mx-auto flex gap-8 lg:gap-4 justify-center flex-wrap lg:flex-row xl:justify-between items-center font-montserrat text-white text-xl py-16">
+  <div class="container mx-auto flex gap-8 lg:gap-4 flex-wrap lg:flex-row justify-between items-center font-montserrat text-white text-xl py-16">
     {bandeau.map((item) => (
-      <div class="flex flex-col flex-wrap w-[15%] items-center justify-between gap-4 font-montserrat text-white text-sm lg:text-base">
+      <div class="flex flex-col flex-wrap w-1/3 lg:w-[15%] items-center justify-between gap-4 font-montserrat text-white text-sm lg:text-base">
         <img src={item.icone.url} alt={item.icone.description}>
         <span class="text-center">{item.texte}</span>
       </div>

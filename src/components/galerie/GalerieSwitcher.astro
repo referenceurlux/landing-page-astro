@@ -2,6 +2,7 @@
 import { WordpressServices } from "../../data/wordpress";
 import Galerie from "./Galerie.astro";
 import Galerie3 from "./Galerie3.astro";
+import Galerie5 from "./Galerie5.astro";
 interface Props {
   slug: string;
 }
@@ -12,3 +13,4 @@ const template = page.acf.template;
 
 {template === "Template 1" || template === "Template 2" ? <Galerie slug={page.slug} /> : null}
 {template === "Template 3" || template === "Template 4" ? <Galerie3 slug={page.slug} /> : null}
+{template === "Template 5" ? <Galerie5 slug={page.slug} /> : null}
