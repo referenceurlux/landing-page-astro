@@ -1,7 +1,7 @@
 export class WordpressServices {
   public static async getPageBySlug(slug) {
     try {
-      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages?slug=${slug}`);
+      const res = await fetch(`https://pages.lu/static/wp-json/wp/v2/pages?slug=${slug}`);
       const [data] = await res.json();
       return data;
     } catch (error) {
@@ -11,7 +11,7 @@ export class WordpressServices {
 
   public static async getPages() {
     try {
-      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/pages`);
+      const res = await fetch(`https://pages.lu/static/wp-json/wp/v2/pages`);
       const data = await res.json();
       return data;
     } catch (error) {
@@ -21,7 +21,7 @@ export class WordpressServices {
 
   public static async getPrimaryMenu() {
     try {
-      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/menu`);
+      const res = await fetch(`https://pages.lu/static/wp-json/wp/v2/menu`);
       const data = await res.json();
       return data;
     } catch (error) {
@@ -31,7 +31,7 @@ export class WordpressServices {
 
   public static async getOptionsPage() {
     try {
-      const res = await fetch(`https://pages.lu/wordpress/wp-json/wp/v2/options`);
+      const res = await fetch(`https://pages.lu/static/wp-json/wp/v2/options`);
       const data = await res.json();
       return data;
     } catch (error) {
