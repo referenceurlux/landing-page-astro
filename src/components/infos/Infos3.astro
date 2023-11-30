@@ -7,7 +7,7 @@ const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 ---
 
-<section class="pt-24 lg:pt-40">
+<section id="services" class="pt-24 lg:pt-40">
   <div class="container mx-auto">
     <div class="grid grid-cols-12 gap-4 relative">
       <div class="col-span-12 lg:col-span-5 relative mb-20 lg:mb-0 order-2 lg:order-1">
@@ -18,7 +18,7 @@ const page = await WordpressServices.getPageBySlug(slug);
         <div class="font-light leading-7 mb-16 text-lsm lg:text-base">
           <Fragment set:html={page.acf.texte_infos_3} />
         </div>
-        <a class="bg-[--primary-color] font-montserrat text-white font-semibold text-sm lg:text-base py-4 px-16 rounded-xl transition-all z-3 mb-8 lg:mb-0" href="">{page.acf.bouton_infos_3}</a>
+        <a class="bg-[--primary-color] font-montserrat text-white font-semibold text-sm lg:text-base py-4 px-16 rounded-xl transition-all z-3 mb-8 lg:mb-0" href="#contact">{page.acf.bouton_infos_3}</a>
       </div>
     </div>
   </div>

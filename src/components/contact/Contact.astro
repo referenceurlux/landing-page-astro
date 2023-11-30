@@ -1,32 +1,13 @@
 ---
 import { WordpressServices } from "../../data/wordpress";
-const page = await WordpressServices.getPageBySlug("accueil");
-
-// if (typeof document !== "undefined") {
-//   const formulaire = document.querySelector<HTMLFormElement>("#contactForm");
-//   const Btn = document.querySelector(".sendBtn");
-//   if (formulaire) {
-//     Btn?.addEventListener("click", () => {
-//       formulaire.addEventListener("submit", (e) => {
-//         e.preventDefault();
-
-//         const formData = new FormData(formulaire);
-//         console.log(formData);
-
-//         fetch("http://landingpage.local/wp-json/wp/v2/forms", {
-//           method: "POST",
-//           body: formData,
-//         })
-//           .then((response) => response.json())
-//           .then((data) => console.log(data))
-//           .catch((error) => console.error("Erreur :", error));
-//       });
-//     });
-//   }
-// }
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
 ---
 
-<section class="pt-20 pb-40 relative">
+<section id="contact" class="pt-20 pb-40 relative">
   <div class="container mx-auto">
     <span
       class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase"
@@ -40,14 +21,14 @@ const page = await WordpressServices.getPageBySlug("accueil");
     <div>
       <Fragment set:html={page.acf.shortcode_formulaire_contact} />
     </div>
-    <div class="grid grid-cols-12 gap-4">
+    <!-- <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 xl:col-span-6 xl:col-start-4">
         <iframe class="h-[900px] xl:h-[700px]" src="https://pages.lu/wordpress/contact/" frameborder="0" width="100%" height=""></iframe>
       </div>
-    </div>
-    <!-- <form id="contactForm">
+    </div> -->
+    <form id="contactForm" netlify>
       <div class="grid grid-cols-12 gap-4 font-montserrat font-semibold">
-        <div class="col-span-3 col-start-4">
+        <div class="col-span-12 lg:col-span-3 lg:col-start-4">
           <input
             class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
             type="text"
@@ -57,7 +38,7 @@ const page = await WordpressServices.getPageBySlug("accueil");
             required
           />
         </div>
-        <div class="col-span-3">
+        <div class="col-span-12 lg:col-span-3">
           <input
             class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
             type="text"
@@ -67,7 +48,7 @@ const page = await WordpressServices.getPageBySlug("accueil");
             required
           />
         </div>
-        <div class="col-span-3 col-start-4">
+        <div class="col-span-12 lg:col-span-3 lg:col-start-4">
           <input
             class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
             type="email"
@@ -77,7 +58,7 @@ const page = await WordpressServices.getPageBySlug("accueil");
             required
           />
         </div>
-        <div class="col-span-3">
+        <div class="col-span-12 lg:col-span-3">
           <input
             class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
             type="tel"
@@ -87,7 +68,7 @@ const page = await WordpressServices.getPageBySlug("accueil");
             required
           />
         </div>
-        <div class="col-span-6 col-start-4">
+        <div class="col-span-12 lg:col-span-6 lg:col-start-4">
           <textarea
             class="bg-[--secondary-color] outline-none py-8 px-16 rounded-3xl w-full focus:border focus:border-[--primary-color] transition-all"
             id="message"
@@ -96,13 +77,48 @@ const page = await WordpressServices.getPageBySlug("accueil");
             rows="5"
             required></textarea>
         </div>
-        <div class="col-span-2 col-start-6 mt-16">
+        <div class="col-span-12 lg:col-span-2 lg:col-start-6 mt-16">
           <button
             class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn"
             type="submit"
-            value="Envoyer"></button>
+            value="Envoyer">Envoyer</button>
         </div>
       </div>
-    </form> -->
+    </form>
   </div>
 </section>
+
+<!-- <script>
+  // Initialisez Email.js avec votre service, modèle et utilisateur
+  emailjs.init("user_your_emailjs_user_id");
+
+  // Écoutez l'événement de soumission du formulaire
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
+
+    // Obtenez les valeurs des champs du formulaire
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var email = document.getElementById("email").value;
+    var telephone = document.getElementById("telephone").value;
+    var message = document.getElementById("message").value;
+
+    // Préparez les données à envoyer
+    var data = {
+      nom: nom,
+      prenom: prenom,
+      email: email,
+      telephone: telephone,
+      message: message,
+    };
+
+    // Utilisez Email.js pour envoyer l'e-mail
+    emailjs.send("default_service", "template_id", data)
+      .then(function (response) {
+        console.log("Email envoyé avec succès :", response);
+      })
+      .catch(function (error) {
+        console.log("Erreur lors de l'envoi de l'e-mail :", error);
+      });
+  });
+</script> -->

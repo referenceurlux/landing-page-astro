@@ -11,6 +11,6 @@ const page = await WordpressServices.getPageBySlug(slug);
 const template = page.acf.template;
 ---
 
-<!-- {template === "Template 1" ? <Contact slug={page.slug} /> : null} -->
+{template === "Template 1" ? <Contact slug={page.slug} /> : null}
 {template === "Template 3" ? <Contact3 slug={page.slug} /> : null}
 {template === "Template 5" ? <Contact5 slug={page.slug} /> : null}

@@ -21,13 +21,28 @@ const template = page.acf.template;
         <img src={logo.url} alt={logo.description} />
       </a>
       <ul class="gap-8 hidden xl:flex">
-        {
+        <!-- {
           menu.map((item) => (
             <li class="hover:text-[--primary-color] transition-all">
               <a href={item.title}>{item.title}</a>
             </li>
           ))
-        }
+        } -->
+        <li class="hover:text-[--primary-color] transition-all">
+          <a href=#about>À propos</a>
+        </li>
+        <li class={`${template === 'Template 3' || template === 'Template 4' || template === 'Template 5' ? '' : 'hidden'} hover:text-[--primary-color] transition-all`}>
+          <a href=#valeurs>Valeurs</a>
+        </li>
+        <li class="hover:text-[--primary-color] transition-all">
+          <a href=#services>Services</a>
+        </li>
+        <li class="hover:text-[--primary-color] transition-all">
+          <a href=#galerie>Galerie</a>
+        </li>
+        <li class="hover:text-[--primary-color] transition-all">
+          <a href=#contact>Contact</a>
+        </li>
       </ul>
       <a
         class={`bg-[--primary-color] hidden xl:block text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} transition-all`}
@@ -69,14 +84,26 @@ const template = page.acf.template;
         <div
           class="container mx-auto py-40 flex flex-col justify-center items-center gap-8"
         >
-          <ul class="gap-8 flex xl:hidden text-xl uppercase">
-            {
-              menu.map((item) => (
+          <ul class="gap-8 flex xl:hidden text-xl uppercase justify-center items-center flex-col">
+            <!-- {
+              menu.map((item) => ( -->
                 <li class="hover:text-[--primary-color] transition-all">
-                  <a href={item.slug}>{item.title}</a>
+                  <a href=#about>À propos</a>
                 </li>
-              ))
-            }
+                <li class={`${template === 'Template 3' || template === 'Template 4' || template === 'Template 5' ? '' : 'hidden'} hover:text-[--primary-color] transition-all`}>
+                  <a href=#valeurs>Valeurs</a>
+                </li>
+                <li class="hover:text-[--primary-color] transition-all">
+                  <a href=#services>Services</a>
+                </li>
+                <li class="hover:text-[--primary-color] transition-all">
+                  <a href=#galerie>Galerie</a>
+                </li>
+                <li class="hover:text-[--primary-color] transition-all">
+                  <a href=#contact>Contact</a>
+                </li>
+              <!-- ))
+            } -->
           </ul>
           <a
             class={`bg-[--primary-color] block w-fit xl:hidden text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'}  transition-all`}

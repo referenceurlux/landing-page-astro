@@ -254,14 +254,15 @@ const color = page.acf.couleur_principale;
             data-aos="fade-up"
             data-aos-delay="300"
             class="font-montserrat text-sm lg:text-base text-[--primary-color] border-2 border-[--primary-color] font-semibold py-4 px-16 rounded-full transition-all z-3"
-            href="">{page.acf.cta_hero_5}</a
+            href="#contact">{page.acf.cta_hero_5}</a
           >
         </div>
       </div>
       <div class="col-span-12 lg:col-span-9 lg:col-end-13 lg:row-span-full">
         <div class="h-[90%] relative">
-          <button
+          <a
           class="bg-white/20 p-8 absolute bottom-0 right-0 backdrop-blur-lg"
+          href="#valeurs"
         >
           <svg
             class="w-8 h-8 fill-white"
@@ -273,7 +274,7 @@ const color = page.acf.couleur_principale;
               d="M47.313.189a.739.739,0,0,0-1.04,0L32.289,14.174a.735.735,0,0,0,1.04,1.04L46.053,2.489V46.347a.736.736,0,1,0,1.472,0V2.489L60.249,15.222a.735.735,0,1,0,1.04-1.04L47.3.2Z"
               transform="translate(62.003 47.584) rotate(180)"></path>
           </svg>
-        </button>
+        </a>
           <img
             class="w-full h-full object-cover"
             src={page.acf.background_hero_5.url}

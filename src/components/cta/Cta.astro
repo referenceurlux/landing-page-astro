@@ -15,7 +15,7 @@ const page = await WordpressServices.getPageBySlug(slug);
       <div data-aos="fade-up" class="font-montserrat font-semibold text-2xl lg:text-5xl text-white text-center mb-8 z-3">
         <Fragment set:html={page.acf.texte_cta} />
       </div>
-      <a data-aos="fade-up" data-aos-delay="300" class="bg-white font-montserrat text-xs md:text-base text-[--primary-color] font-semibold py-4 px-8 md:px-16 rounded-full transition-all z-3" href="">{page.acf.bouton_cta}</a>
+      <a data-aos="fade-up" data-aos-delay="300" class="bg-white font-montserrat text-xs md:text-base text-[--primary-color] font-semibold py-4 px-8 md:px-16 rounded-full transition-all z-3" href="#contact">{page.acf.bouton_cta}</a>
     </div>
   </div>
 </section>
