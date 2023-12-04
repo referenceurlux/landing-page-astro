@@ -11,15 +11,15 @@ const page = await WordpressServices.getPageBySlug(slug);
   <div class="container mx-auto">
     <span
       class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase"
-      >{page.acf.gros_titre_contact}</span
+      >{page.acf.gros_titre_contact ? page.acf.gros_titre_contact : null}</span
     >
     <div
       class="font-montserrat font-semibold text-2xl md:text-5xl text-center mb-20"
     >
-      <Fragment set:html={page.acf.petit_titre_contact} />
+      <Fragment set:html={page.acf.petit_titre_contact ? page.acf.petit_titre_contact : null} />
     </div>
     <div>
-      <Fragment set:html={page.acf.shortcode_formulaire_contact} />
+      <Fragment set:html={page.acf.shortcode_formulaire_contact ? page.acf.shortcode_formulaire_contact : null} />
     </div>
     <!-- <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 xl:col-span-6 xl:col-start-4">

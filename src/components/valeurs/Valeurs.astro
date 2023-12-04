@@ -17,8 +17,8 @@ const valeurs = page.acf.liste_valeurs;
         <img
           data-aos="zoom-in-up"
           class="w-full h-full object-cover relative rounded-3xl"
-          src={page.acf.image_gauche_3.url}
-          alt={page.acf.image_gauche_3.description}
+          src={page.acf.image_gauche_3.url ? page.acf.image_gauche_3.url : null}
+          alt={page.acf.image_gauche_3.description ? page.acf.image_gauche_3.description : null}
         />
       </div>
       <div
@@ -27,15 +27,14 @@ const valeurs = page.acf.liste_valeurs;
         <img
           data-aos="zoom-in-up"
           class="w-full h-full object-cover relative rounded-3xl"
-          src={page.acf.image_droite_3.url}
-          alt={page.acf.image_droite_3.description}
+          src={page.acf.image_droite_3.url ? page.acf.image_droite_3.url : null}
+          alt={page.acf.image_droite_3.description ? page.acf.image_droite_3.description : null}
         />
       </div>
       <div
         class="col-span-12 lg:col-span-5 lg:col-end-13 lg:row-span-full relative flex gap-8 lg:gap-4 lg:-translate-x-[15%] flex-col justify-center order-1 lg:order-3 mb-8 lg:mb-0"
       >
-        {
-          valeurs.map((valeur) => (
+        {valeurs ? valeurs.map((valeur) => (
             <div class="font-montserrat flex flex-col lg:flex-row lg:items-center gap-4">
               <div class="relative bg-black rounded-xl w-28 h-28 p-4 flex justify-center items-center">
                 <img
@@ -65,8 +64,7 @@ const valeurs = page.acf.liste_valeurs;
                 <span>{valeur.description}</span>
               </div>
             </div>
-          ))
-        }
+          )) : null}
       </div>
     </div>
   </div>

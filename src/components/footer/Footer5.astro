@@ -45,18 +45,18 @@ const template = page.acf.template;
       >
         <img
           class="mb-8 w-1/2 lg:w-auto"
-          src={logo.url}
-          alt={logo.description}
+          src={logo.url ? logo.url : null}
+          alt={logo.description ? logo.description : null}
         />
         <p class="mb-8 opacity-80 text-sm lg:text-base">
-          {texte}
+          {texte ? texte : null}
         </p>
         <div>
           <ul class="flex gap-4">
             <li class="w-12 h-12 rounded-full">
               <a
                 class="w-full h-full flex justify-center items-center"
-                href={facebook}
+                href={facebook ? facebook : null}
                 target="_blank"
               >
                 <svg
@@ -76,7 +76,7 @@ const template = page.acf.template;
             <li class="w-12 h-12 rounded-full">
               <a
                 class="w-full h-full flex justify-center items-center"
-                href={instagram}
+                href={instagram ? instagram : null}
                 target="_blank"
               >
                 <svg
@@ -97,7 +97,7 @@ const template = page.acf.template;
             <li class="w-12 h-12 rounded-full">
               <a
                 class="w-full h-full flex justify-center items-center"
-                href={linkedin}
+                href={linkedin ? linkedin : null}
                 target="_blank"
               >
                 <svg
@@ -154,16 +154,16 @@ const template = page.acf.template;
           <li>
             <a
               class=" transition-all"
-              href=`tel:${phone}`>{phone}</a
+              href=`tel:${phone ? phone : null}`>{phone ? phone : null}</a
             >
           </li>
           <li>
             <a
               class=" transition-all"
-              href=`mailto:${email}`>{email}</a
+              href=`mailto:${email ? email : null}`>{email ? email : null}</a
             >
           </li>
-          <li>{adresse}</li>
+          <li>{adresse ? adresse : null}</li>
         </ul>
       </div>
       <div class="col-span-12 lg:col-span-3 flex flex-col lg:translate-x-1/4">

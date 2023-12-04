@@ -10,31 +10,31 @@ const template = page.acf.template;
 
 <section id="galerie" class="py-20 relative">
   <div class="container mx-auto">
-    <span class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase">{page.acf.gros_titre_galerie}</span>
+    <span class="font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase">{page.acf.gros_titre_galerie ? page.acf.gros_titre_galerie : null}</span>
     <div class="font-montserrat font-semibold text-2xl md:text-5xl text-center mb-20">
-      <Fragment set:html={page.acf.petit_titre_galerie} />
+      <Fragment set:html={page.acf.petit_titre_galerie ? page.acf.petit_titre_galerie : null} />
     </div>
     <div class="grid grid-cols-12 gap-4">
       <div class={`col-span-12 md:col-span-8 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie.url} alt={page.acf.image_1_galerie.description}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie.url ? page.acf.image_1_galerie.url : null} alt={page.acf.image_1_galerie.description ? page.acf.image_1_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie.url} alt={page.acf.image_2_galerie.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie.url ? page.acf.image_2_galerie.url : null} alt={page.acf.image_2_galerie.description ? page.acf.image_2_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie.url} alt={page.acf.image_3_galerie.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie.url ? page.acf.image_3_galerie.url : null} alt={page.acf.image_3_galerie.description ? page.acf.image_3_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie.url} alt={page.acf.image_4_galerie.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie.url ? page.acf.image_4_galerie.url : null} alt={page.acf.image_4_galerie.description ? page.acf.image_4_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie.url} alt={page.acf.image_5_galerie.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie.url ? page.acf.image_5_galerie.url : null} alt={page.acf.image_5_galerie.description ? page.acf.image_5_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie.url} alt={page.acf.image_6_galerie.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie.url ? page.acf.image_6_galerie.url : null} alt={page.acf.image_6_galerie.description ? page.acf.image_6_galerie.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-8 overflow-hidden`}>
-        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie.url} alt={page.acf.image_7_galerie.description}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie.url ? page.acf.image_7_galerie.url : null} alt={page.acf.image_7_galerie.description ? page.acf.image_7_galerie.description : null}>
       </div>
     </div>
   </div>

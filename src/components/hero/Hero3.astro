@@ -17,28 +17,28 @@ const color = page.acf.couleur_principale;
           data-aos="fade-up"
           class="text-3xl xl:text-6xl text-black uppercase z-3 font-bold font-montserrat mb-4"
         >
-          <Fragment set:html={page.acf.titre_hero_3} />
+          <Fragment set:html={page.acf.titre_hero_3 ? page.acf.titre_hero_3 : null} />
         </div>
         <h4
           class="font-montserrat font-medium uppercase text-[--primary-color] text-base xl:text-3xl mb-8"
         >
-          {page.acf.accroche_hero_3}
+          {page.acf.accroche_hero_3 ? page.acf.accroche_hero_3 : null}
         </h4>
         <div class="font-montserrat text-base lg:text-lg mb-12 lg:w-4/5">
-          <Fragment set:html={page.acf.texte_hero_3} />
+          <Fragment set:html={page.acf.texte_hero_3 ? page.acf.texte_hero_3 : null} />
         </div>
         <a
           data-aos="fade-up"
           data-aos-delay="300"
           class="bg-[--primary-color] font-montserrat text-white font-semibold text-sm lg:text-base py-4 px-16 rounded-xl transition-all z-3"
-          href="#contact">{page.acf.cta_hero_3}</a
+          href="#contact">{page.acf.cta_hero_3 ? page.acf.cta_hero_3 : null}</a
         >
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-13 background-hero-3 relative">
         <img
           class="w-full h-full object-cover rounded-3xl"
-          src={page.acf.background_hero_3.url}
-          alt={page.acf.background_hero_3.description}
+          src={page.acf.background_hero_3.url ? page.acf.background_hero_3.url : null}
+          alt={page.acf.background_hero_3.description ? page.acf.background_hero_3.description : null}
         />
         <a href="#valeurs" class="bg-[--primary-color] hidden lg:block p-8 rounded-3xl absolute bottom-0 right-0 translate-x-1/3 -translate-y-1/2">
           <svg class="w-8 h-8 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.428 48.185">

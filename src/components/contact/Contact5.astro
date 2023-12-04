@@ -41,8 +41,8 @@ const page = await WordpressServices.getPageBySlug(slug);
             <path id="check-light_1_" data-name="check-light (1)" d="M8,96.133a.288.288,0,0,1,0,.405l-4.878,4.878a.288.288,0,0,1-.405,0L.133,98.834a.287.287,0,0,1,.405-.405l2.38,2.38,4.675-4.675A.288.288,0,0,1,8,96.133Z" transform="translate(35.358 -84.254)" fill="#fff" stroke="#fff" stroke-width="0.5"/>
           </svg>   
         </div>         
-        <h2 class="font-semibold text-[--primary-color] text-3xl lg:text-5xl mb-6 lg:w-1/2 text-center mx-auto">{page.acf.titre_contact_5}</h2>
-        <p class=" text-sm lg:text-base lg:w-1/2 text-center mx-auto">{page.acf.texte_contact_5}</p>
+        <h2 class="font-semibold text-[--primary-color] text-3xl lg:text-5xl mb-6 lg:w-1/2 text-center mx-auto">{page.acf.titre_contact_5 ? page.acf.titre_contact_5 : null}</h2>
+        <p class=" text-sm lg:text-base lg:w-1/2 text-center mx-auto">{page.acf.texte_contact_5 ? page.acf.texte_contact_5 : null}</p>
       </div>
       <div class="col-span-12 lg:col-span-4 lg:col-start-2 relative order-2 lg:order-1">
         <svg class="fill-[--primary-color] opacity-50 absolute top-0 left-0 -translate-y-3/4 translate-x-1/2" xmlns="http://www.w3.org/2000/svg" width="76" height="94" viewBox="0 0 76 94">
@@ -80,7 +80,7 @@ const page = await WordpressServices.getPageBySlug(slug);
           </g>
         </svg>
         
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_contact_5.url} alt={page.acf.image_contact_5.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_contact_5.url ? page.acf.image_contact_5.url : null} alt={page.acf.image_contact_5.description ? page.acf.image_contact_5.description : null}>
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat flex flex-col justify-center font-medium text-[--secondary-color] order-1 lg:order-2 mb-20 lg:mb-0">
         <form class="flex flex-wrap justify-center lg:justify-between gap-4" action="" method="post">

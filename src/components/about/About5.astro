@@ -19,34 +19,34 @@ const liste = page.acf.liste_about_5;
           <h2
             class="font-semibold text-[--primary-color] text-3xl lg:text-5xl mb-8"
           >
-            {page.acf.titre_about_5}
+            {page.acf.titre_about_5 ?  page.acf.titre_about_5 : null}
           </h2>
           <div class="text-sm lg:text-base">
-            <Fragment set:html={page.acf.texte_about_5} />
+            <Fragment set:html={page.acf.texte_about_5 ? page.acf.texte_about_5 : null} />
           </div>
         </div>
         <a
           class="font-montserrat w-fit text-[--primary-color] text-sm lg:text-base border-2 border-[--primary-color] font-semibold py-4 px-16 rounded-full transition-all z-3"
-          href="#contact">{page.acf.bouton_about_5}</a
+          href="#contact">{page.acf.bouton_about_5 ? page.acf.bouton_about_5 : null}</a
         >
       </div>
       <div class="col-span-12 lg:col-span-6 font-montserrat py-16 flex justify-between flex-wrap gap-y-10">
-        {liste.map((item) => (
+        {liste ? liste.map((item) => (
           <div class="flex flex-col w-1/2">
             <span class="font-semibold text-[--primary-color] text-3xl lg:text-5xl mb-6">{item.chiffre}</span>
             <h4 class="font-semibold text-[--primary-color] text-lg lg:text-2xl mb-2">{item.titre}</h4>
             <p class=" text-xs lg:text-sm w-4/5">{item.texte}</p>
           </div>
-        ))}
+        )): null}
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-13 flex gap-4">
         <div class="flex flex-col gap-4 translate-y-16">
-          <img class="h-1/3 w-full object-cover" src={page.acf.image_1_about_5.url} alt={page.acf.image_1_about_5.description}>
-          <img class="h-2/3 w-full object-cover" src={page.acf.image_2_about_5.url} alt={page.acf.image_2_about_5.description}>
+          <img class="h-1/3 w-full object-cover" src={page.acf.image_1_about_5.url ? page.acf.image_1_about_5.url : null} alt={page.acf.image_1_about_5.description ? page.acf.image_1_about_5.description : null}>
+          <img class="h-2/3 w-full object-cover" src={page.acf.image_2_about_5.url ? page.acf.image_2_about_5.url : null} alt={page.acf.image_2_about_5.description ? page.acf.image_2_about_5.description : null}>
         </div>
         <div class="flex flex-col gap-4">
-          <img class="h-2/3 w-full object-cover" src={page.acf.image_3_about_5.url} alt={page.acf.image_3_about_5.description}>
-          <img class="h-1/3 w-full object-cover" src={page.acf.image_4_about_5.url} alt={page.acf.image_4_about_5.description}>
+          <img class="h-2/3 w-full object-cover" src={page.acf.image_3_about_5.url ? page.acf.image_3_about_5.url : null} alt={page.acf.image_3_about_5.description ? page.acf.image_3_about_5.description : null}>
+          <img class="h-1/3 w-full object-cover" src={page.acf.image_4_about_5.url ? page.acf.image_4_about_5.url : null} alt={page.acf.image_4_about_5.description ? page.acf.image_4_about_5.description : null}>
         </div>
       </div>
     </div>

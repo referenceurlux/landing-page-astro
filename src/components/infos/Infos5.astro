@@ -12,12 +12,12 @@ const page = await WordpressServices.getPageBySlug(slug);
     <div class="grid grid-cols-12 gap-4 relative">
       <div class="col-span-12 lg:col-span-5 flex gap-4 order-2 lg:order-1">
         <div class="flex flex-col gap-4 ">
-          <img class="h-1/3 w-full object-cover" src={page.acf.image_1_infos_5.url} alt={page.acf.image_1_infos_5.description}>
-          <img class="h-2/3 w-full object-cover" src={page.acf.image_2_infos_5.url} alt={page.acf.image_2_infos_5.description}>
+          <img class="h-1/3 w-full object-cover" src={page.acf.image_1_infos_5.url ? page.acf.image_1_infos_5.url : null} alt={page.acf.image_1_infos_5.description ? page.acf.image_1_infos_5.description : null}>
+          <img class="h-2/3 w-full object-cover" src={page.acf.image_2_infos_5.url ? page.acf.image_2_infos_5.url : null} alt={page.acf.image_2_infos_5.description ? page.acf.image_2_infos_5.description : null}>
         </div>
         <div class="flex flex-col gap-4 translate-y-16">
-          <img class="h-2/3 w-full object-cover" src={page.acf.image_3_infos_5.url} alt={page.acf.image_3_infos_5.description}>
-          <img class="h-1/3 w-full object-cover" src={page.acf.image_4_infos_5.url} alt={page.acf.image_4_infos_5.description}>
+          <img class="h-2/3 w-full object-cover" src={page.acf.image_3_infos_5.url ? page.acf.image_3_infos_5.url : null} alt={page.acf.image_3_infos_5.description ? page.acf.image_3_infos_5.description : null}>
+          <img class="h-1/3 w-full object-cover" src={page.acf.image_4_infos_5.url ? page.acf.image_4_infos_5.url : null} alt={page.acf.image_4_infos_5.description ? page.acf.image_4_infos_5.description : null}>
         </div>
       </div>
       <div
@@ -28,15 +28,15 @@ const page = await WordpressServices.getPageBySlug(slug);
           <h2
             class="font-semibold text-[--primary-color] text-3xl lg:text-5xl mb-8"
           >
-            {page.acf.titre_infos_5}
+            {page.acf.titre_infos_5 ? page.acf.titre_infos_5 : null}
           </h2>
           <div class="mb-12 text-sm lg:text-base">
-            <Fragment set:html={page.acf.texte_infos_5} />
+            <Fragment set:html={page.acf.texte_infos_5 ? page.acf.texte_infos_5 : null} />
           </div>
         </div>
         <a
           class="font-montserrat text-sm lg:text-base text-[--primary-color] border-2 border-[--primary-color] font-semibold py-4 px-16 mb-8 rounded-full transition-all z-3"
-          href="#contact">{page.acf.bouton_infos_5}</a
+          href="#contact">{page.acf.bouton_infos_5 ? page.acf.bouton_infos_5 : null}</a
         >
       </div>
     </div>

@@ -10,28 +10,28 @@ const template = page.acf.template;
 
 <section id="galerie" class="py-10 lg:py-20 relative">
   <div class="container mx-auto">
-    <h2 class="font-montserrat uppercase text-3xl lg:text-5xl mb-8 font-bold text-center">{page.acf.titre_galerie_3}</h2>
+    <h2 class="font-montserrat uppercase text-3xl lg:text-5xl mb-8 font-bold text-center">{page.acf.titre_galerie_3 ? page.acf.titre_galerie_3 : null}</h2>
     <div class="grid grid-cols-12 gap-4">
       <div class={`col-span-12 md:col-span-8 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie_3.url} alt={page.acf.image_1_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_1_galerie_3.url ? page.acf.image_1_galerie_3.url : null} alt={page.acf.image_1_galerie_3.description ? page.acf.image_1_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie_3.url} alt={page.acf.image_2_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_2_galerie_3.url ? page.acf.image_2_galerie_3.url : null} alt={page.acf.image_2_galerie_3.description ? page.acf.image_2_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie_3.url} alt={page.acf.image_3_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_3_galerie_3.url ? page.acf.image_3_galerie_3.url : null} alt={page.acf.image_3_galerie_3.description ? page.acf.image_3_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie_3.url} alt={page.acf.image_4_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_4_galerie_3.url ? page.acf.image_4_galerie_3.url : null} alt={page.acf.image_4_galerie_3.description ? page.acf.image_4_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie_3.url} alt={page.acf.image_5_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_5_galerie_3.url ? page.acf.image_5_galerie_3.url : null} alt={page.acf.image_5_galerie_3.description ? page.acf.image_5_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-4 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie_3.url} alt={page.acf.image_6_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-square" src={page.acf.image_6_galerie_3.url ? page.acf.image_6_galerie_3.url : null} alt={page.acf.image_6_galerie_3.description ? page.acf.image_6_galerie_3.description : null}>
       </div>
       <div class={`col-span-12 md:col-span-8 overflow-hidden rounded-3xl`}>
-        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie_3.url} alt={page.acf.image_7_galerie_3.description}>
+        <img class="w-full h-full object-cover aspect-video" src={page.acf.image_7_galerie_3.url ? page.acf.image_7_galerie_3.url : null} alt={page.acf.image_7_galerie_3.description ? page.acf.image_7_galerie_3.description : null}>
       </div>
     </div>
   </div>

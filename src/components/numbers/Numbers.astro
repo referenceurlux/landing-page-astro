@@ -11,20 +11,18 @@ const chiffres = page.acf.chiffres;
 
 <section class="pt-20 pb-40 relative">
   <div class="container mx-auto">
-    <span class={`font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase ${template === 'Template 4' ? 'hidden' : ''}`}>{page.acf.gros_titre_chiffres}</span>
-    <h2 class={`font-montserrat text-3xl lg:text-5xl mb-16 font-bold text-center ${template === 'Template 4' ? 'uppercase' : ''}`}>{page.acf.titre_chiffres}</h2>
+    <span class={`font-montserrat text-[--secondary-color] opacity-50 -z-1 absolute left-1/2 -translate-x-1/2 top-0 text-6xl lg:text-9xl font-bold uppercase ${template === 'Template 4' ? 'hidden' : ''}`}>{page.acf.gros_titre_chiffres ? page.acf.gros_titre_chiffres : null}</span>
+    <h2 class={`font-montserrat text-3xl lg:text-5xl mb-16 font-bold text-center ${template === 'Template 4' ? 'uppercase' : ''}`}>{page.acf.titre_chiffres ? page.acf.titre_chiffres : null}</h2>
     <div class="grid grid-cols-12 gap-4 divide-x-2 divide-[--primary-color] mb-16">
-      {
-        chiffres.map((chiffre) => (
+      {chiffres ? chiffres.map((chiffre) => (
           <div class="col-span-4 flex flex-col items-center justify-center font-montserrat">
             <span class="font-semibold lg:text-7xl mb-4">{chiffre.nombre}</span>
             <p class="lg:text-xl">{chiffre.texte}</p>  
           </div>
-        ))
-      }
+        )) : null}
     </div>
     <div class="flex justify-center">
-      <a data-aos="fade-up" data-aos-delay="300" class={`text-white mx-auto font-montserrat text-xs md:text-base bg-[--primary-color] font-semibold py-4 px-8 md:px-16 transition-all z-3 ${template === 'Template 4' ? 'rounded-xl' : 'rounded-full'}`} href="">{page.acf.bouton_chiffres}</a>
+      <a data-aos="fade-up" data-aos-delay="300" class={`text-white mx-auto font-montserrat text-xs md:text-base bg-[--primary-color] font-semibold py-4 px-8 md:px-16 transition-all z-3 ${template === 'Template 4' ? 'rounded-xl' : 'rounded-full'}`} href="">{page.acf.bouton_chiffres ? page.acf.bouton_chiffres : null}</a>
     </div>
   </div>
 </section>

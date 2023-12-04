@@ -12,10 +12,10 @@ const page = await WordpressServices.getPageBySlug(slug);
     <div class="grid grid-cols-12 gap-4 relative bg-[--primary-color] rounded-3xl overflow-hidden px-8 py-24">
       <div class="absolute top-0 left-0 w-full h-full bg-[--primary-color] z-1 opacity-80"></div>
       <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[--primary-color] to-transparent z-1"></div>
-      <img class="absolute top-0 left-0 w-full h-full object-cover z-0" src={page.acf.background_cta.url} alt={page.acf.background_cta.description}>
+      <img class="absolute top-0 left-0 w-full h-full object-cover z-0" src={page.acf.background_cta.url ? page.acf.background_cta.url : null} alt={page.acf.background_cta.description ? page.acf.background_cta.description : null}>
       <div class="col-span-12 lg:col-span-4 lg:col-start-2 z-1 font-montserrat text-white text-center lg:text-left">
-        <h2 class="font-bold uppercase text-3xl lg:text-5xl mb-6">{page.acf.titre_contact_3}</h2>
-        <p class="text-xs lg:text-lg">{page.acf.texte_contact_3}</p>
+        <h2 class="font-bold uppercase text-3xl lg:text-5xl mb-6">{page.acf.titre_contact_3 ? page.acf.titre_contact_3 : null}</h2>
+        <p class="text-xs lg:text-lg">{page.acf.texte_contact_3 ? page.acf.texte_contact_3 : null}</p>
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat font-medium text-[--secondary-color]">
         <form class="flex flex-wrap justify-between gap-4" action="" method="post">

@@ -9,25 +9,23 @@ const bandeau = page.acf.bandeau_hero;
 const color = page.acf.couleur_principale;
 ---
 <section class="lg:h-screen w-full relative">
-  <img class="absolute w-full h-full object-cover aspect-video" src={page.acf.background_hero.url} alt={page.acf.background_hero.description}>
+  <img class="absolute w-full h-full object-cover aspect-video" src={page.acf.background_hero.url ? page.acf.background_hero.url : null} alt={page.acf.background_hero.description ? page.acf.background_hero.description : null}>
   <div class="absolute w-full h-3/4 top-0 left-0 bg-gradient-to-b from-black to-transparent z-2"></div>
   <div class="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-black to-transparent z-2"></div>
   <div class="container mx-auto flex items-center flex-col justify-center h-screen lg:h-full">
       <div data-aos="fade-up" class="text-3xl xl:text-6xl text-white z-3 font-semibold font-montserrat w-3/4 mb-8">
-        <Fragment set:html={page.acf.titre_hero} />
+        <Fragment set:html={page.acf.titre_hero ? page.acf.titre_hero : null} />
       </div>
-      <a data-aos="fade-up" data-aos-delay="300" class="bg-[--primary-color] font-montserrat text-white font-semibold py-4 px-16 rounded-full transition-all z-3" href="#contact">{page.acf.cta_hero}</a>
+      <a data-aos="fade-up" data-aos-delay="300" class="bg-[--primary-color] font-montserrat text-white font-semibold py-4 px-16 rounded-full transition-all z-3" href="#contact">{page.acf.cta_hero ? page.acf.cta_hero : null}</a>
   </div>
   <div class="relative lg:absolute w-full bottom-0 left-0 bg-[--primary-color] z-3">
     <div class="container mx-auto flex gap-8 lg:gap-4 justify-center flex-wrap lg:flex-row xl:justify-between items-center font-montserrat text-white text-xl py-8">
-      {
-        bandeau.map((item) => (
+      {bandeau ? bandeau.map((item) => (
           <div class="flex items-center justify-center text-sm lg:text-base">
             <img class="mr-4" src={item.icone.url} alt={item.icone.description}>
             <span>{item.texte}</span>
           </div>
-        ))
-      }
+        )): null}
     </div>
   </div>
 </section>
