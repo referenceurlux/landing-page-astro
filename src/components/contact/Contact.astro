@@ -6,22 +6,22 @@ interface Props {
 const {slug} = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get("nom");
-    const firstname = data.get("prenom");
-    const email = data.get("email");
-    const phone = data.get("telephone");
-    const message = data.get("message");
-    console.log(name + ' ' + firstname + ' ' + email + ' ' + phone + ' ' + message);
+// if (Astro.request.method === "POST") {
+//   try {
+//     const data = await Astro.request.formData();
+//     const name = data.get("nom");
+//     const firstname = data.get("prenom");
+//     const email = data.get("email");
+//     const phone = data.get("telephone");
+//     const message = data.get("message");
+//     console.log(name + ' ' + firstname + ' ' + email + ' ' + phone + ' ' + message);
     
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       console.error(error.message);
+//     }
+//   }
+// }
 
 
 ---
@@ -46,6 +46,7 @@ if (Astro.request.method === "POST") {
       </div>
     </div> -->
     <form id="contactForm" name="contact" method="POST" data-netlify=true>
+      <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
       <div class="grid grid-cols-12 gap-4 font-montserrat font-semibold">
         <div class="col-span-12 lg:col-span-3 lg:col-start-4">
           <input
@@ -107,10 +108,7 @@ if (Astro.request.method === "POST") {
   </div>
 </section>
 
-<!-- <script>
-  // Initialisez Email.js avec votre service, modèle et utilisateur
-  emailjs.init("user_your_emailjs_user_id");
-
+<script>
   // Écoutez l'événement de soumission du formulaire
   document.getElementById("contactForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
@@ -121,6 +119,7 @@ if (Astro.request.method === "POST") {
     var email = document.getElementById("email").value;
     var telephone = document.getElementById("telephone").value;
     var message = document.getElementById("message").value;
+    var email_client = document.getElementById("email_client").value;
 
     // Préparez les données à envoyer
     var data = {
@@ -129,10 +128,11 @@ if (Astro.request.method === "POST") {
       email: email,
       telephone: telephone,
       message: message,
+      email_client: email_client
     };
 
     // Utilisez Email.js pour envoyer l'e-mail
-    emailjs.send("default_service", "template_id", data)
+    emailjs.send("service_tyiu5yu", "template_k81m95u", data)
       .then(function (response) {
         console.log("Email envoyé avec succès :", response);
       })
@@ -140,4 +140,4 @@ if (Astro.request.method === "POST") {
         console.log("Erreur lors de l'envoi de l'e-mail :", error);
       });
   });
-</script> -->
+</script>

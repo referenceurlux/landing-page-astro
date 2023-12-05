@@ -83,15 +83,50 @@ const page = await WordpressServices.getPageBySlug(slug);
         <img class="w-full h-full object-cover aspect-square" src={page.acf.image_contact_5.url ? page.acf.image_contact_5.url : null} alt={page.acf.image_contact_5.description ? page.acf.image_contact_5.description : null}>
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat flex flex-col justify-center font-medium text-[--secondary-color] order-1 lg:order-2 mb-20 lg:mb-0">
-        <form class="flex flex-wrap justify-center lg:justify-between gap-4" action="" method="post">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="nom" placeholder="Nom" id="">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="prenom" placeholder="Prénom" id="">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="email" name="email" placeholder="Email" id="">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="tel" name="telephone" placeholder="Téléphone" id="">
-          <textarea class="py-5 px-8 rounded-3xl outline-none w-full" name="message" id="" cols="30" rows="3" placeholder="Message"></textarea>
+        <form id="contactForm" class="flex flex-wrap justify-center lg:justify-between gap-4" action="" method="post">
+          <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="nom" placeholder="Nom" id="nom">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="email" name="email" placeholder="Email" id="email">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone">
+          <textarea class="py-5 px-8 rounded-3xl outline-none w-full" name="message" id="message" cols="30" rows="3" placeholder="Message"></textarea>
           <button class="rounded-full border-2 border-[--primary-color] bg-transparent text-[--primary-color] font-semibold py-4 px-12 mt-6 hover:bg-[--primary-color] hover:text-white transition-all" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Écoutez l'événement de soumission du formulaire
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
+
+    // Obtenez les valeurs des champs du formulaire
+    var nom = document.getElementById("nom").value;
+    var prenom = document.getElementById("prenom").value;
+    var email = document.getElementById("email").value;
+    var telephone = document.getElementById("telephone").value;
+    var message = document.getElementById("message").value;
+    var email_client = document.getElementById("email_client").value;
+
+    // Préparez les données à envoyer
+    var data = {
+      nom: nom,
+      prenom: prenom,
+      email: email,
+      telephone: telephone,
+      message: message,
+      email_client: email_client
+    };
+
+    // Utilisez Email.js pour envoyer l'e-mail
+    emailjs.send("service_tyiu5yu", "template_k81m95u", data)
+      .then(function (response) {
+        console.log("Email envoyé avec succès :", response);
+      })
+      .catch(function (error) {
+        console.log("Erreur lors de l'envoi de l'e-mail :", error);
+      });
+  });
+</script>
