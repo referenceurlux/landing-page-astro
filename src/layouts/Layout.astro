@@ -9,6 +9,7 @@ interface Props {
 
 const { title, siteName } = Astro.props;
 const page = await WordpressServices.getPageBySlug(title);
+
 const primaryColor = page.acf.couleur_principale;
 const secondaryColor = page.acf.couleur_secondaire;
 ---

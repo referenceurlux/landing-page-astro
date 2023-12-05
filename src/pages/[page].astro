@@ -22,22 +22,38 @@ import FooterSwitcher from "../components/footer/FooterSwitcher.astro";
 // }
 
 const menu = await WordpressServices.getPrimaryMenu();
-const currentPages = menu.map((data) => {
+const allPages = await WordpressServices.getPages();
+
+// const currentPages = menu.map((data) => {
+//   return {
+//     slug: data.title,
+//   };
+// });
+
+const currentPagess = allPages.map((data) => {
   return {
-    slug: data.title,
+    slug: data.slug,
   };
 });
 
-const page = currentPages.find((page) => page.slug === Astro.params.page);
+
+
+
+
+const page = currentPagess.find((page) => page.slug === Astro.params.page);
+
+
 const currentPage = await WordpressServices.getPageBySlug(page.slug);
-const clientName = currentPage.acf.nom_du_client
+
+
+const clientName = currentPage.acf.nom_du_client;
 
 // const template = currentPage.acf.template;
 
 if (!page) return Astro.redirect("/404");
 ---
 
-<Layout title={page.slug} siteName={clientName}>
+<Layout title={currentPage.slug} siteName={clientName}>
   <Header slug={page.slug} />
   <HeroSwitcher slug={page.slug} />
   <ValeursSwitcher slug={page.slug} />
