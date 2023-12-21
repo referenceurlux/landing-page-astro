@@ -50,6 +50,7 @@ const page = await WordpressServices.getPageBySlug(slug);
     var telephone = document.getElementById("telephone3").value;
     var message = document.getElementById("message3").value;
     var email_client = document.getElementById("email_client").value;
+    var recaptchaResponse = grecaptcha.getResponse();
 
     // Préparez les données à envoyer
     var data = {
@@ -58,7 +59,8 @@ const page = await WordpressServices.getPageBySlug(slug);
       email: email,
       telephone: telephone,
       message: message,
-      email_client: email_client
+      email_client: email_client,
+      "g-recaptcha-response": recaptchaResponse
     };
 
     // Utilisez Email.js pour envoyer l'e-mail
