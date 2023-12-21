@@ -1,0 +1,24 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+---
+
+<section class="relative w-full lg:h-screen">
+  <img class="absolute top-0 left-0 w-full h-full -z-1" src={page.acf.background_hero_6.url} alt={page.acf.background_hero_6.description}>
+  <div class="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-black to-transparent"></div>
+  <div class="absolute w-full h-1/4 top-0 left-0 bg-gradient-to-b from-black to-transparent"></div>
+  <div class="container mx-auto z-1 relative h-full flex flex-col justify-center items-center">
+    <span class="text-white uppercase lg:text-2xl font-montserrat font-normal">{page.acf.accroche_hero_6}</span>
+    <div class="prose-h1:text-white prose-h1:font-semibold prose-h1:text-3xl xl:prose-h1:text-6xl prose-h1:font-montserrat prose-strong:text-[--primary-color] prose-strong:font-semibold lg:w-1/2 text-center my-4">
+      <Fragment set:html={page.acf.titre_hero_6} />
+    </div>
+    <div class="prose-p:text-white prose-p:font-normal lg:prose-p:text-lg prose-p:text-sm lg:w-1/2 text-center mb-10">
+      <Fragment set:html={page.acf.texte_hero_6} />
+    </div>
+    <a class="text-white bg-[--primary-color] font-montserrat font-semibold text-sm lg:text-base px-16 py-4 uppercase rounded-full" href="">{page.acf.cta_hero_6}</a>
+  </div>
+</section>

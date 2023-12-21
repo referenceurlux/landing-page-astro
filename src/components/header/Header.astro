@@ -14,13 +14,13 @@ const phone = page.acf.telephone;
 const template = page.acf.template;
 ---
 
-<header class="py-4 fixed w-full bg-white z-10  font-montserrat">
+<header class={`py-4 fixed w-full ${template === 'Template 6' || template === 'Templae 7' ? 'bg-transparent' : 'bg-white'}  z-10  font-montserrat`}>
   <div class="container mx-auto">
     <nav class="flex justify-between items-center">
-      <a class="z-10" href="/">
+      <a class="z-10" href=`/${slug}`>
         <img src={logo.url ? logo.url : null} alt={logo.description ? logo.description : null} />
       </a>
-      <ul class="gap-8 hidden xl:flex">
+      <ul class={`gap-8 ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'hidden xl:flex'} `}>
         <!-- {
           menu.map((item) => (
             <li class="hover:text-[--primary-color] transition-all">
@@ -45,8 +45,12 @@ const template = page.acf.template;
         </li>
       </ul>
       <a
-        class={`bg-[--primary-color] hidden xl:block text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} transition-all`}
+        class={`bg-[--primary-color] text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'hidden xl:block'} transition-all`}
         href=`tel:${phone ? phone : null}`>{phone ? phone : null}</a
+      >
+      <a
+        class={`bg-transparent border-2 border-[--primary-color] text-white hover:bg-[--primary-color] uppercase font-semibold py-4 px-16 rounded-full ${template === 'Template 6' || template === 'Template 7' ? 'hidden xl:block' : 'hidden'} transition-all`}
+        href=`tel:${phone ? phone : null}`>Postuler</a
       >
       <button
         class="relative block xl:hidden group z-10 menuBtn font-semibold uppercase group"

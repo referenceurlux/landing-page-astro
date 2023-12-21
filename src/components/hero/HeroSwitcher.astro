@@ -1,8 +1,11 @@
 ---
 import { WordpressServices } from "../../data/wordpress";
 import Hero from "./Hero.astro";
+import Hero2 from "./Hero2.astro";
 import Hero3 from "./Hero3.astro";
+import Hero4 from "./Hero4.astro";
 import Hero5 from "./Hero5.astro";
+import Hero6 from "./Hero6.astro";
 interface Props {
   slug: string;
 }
@@ -12,5 +15,8 @@ const template = page.acf.template;
 ---
 
 {template === "Template 1" ? <Hero slug={page.slug} /> : null}
+{template === "Template 2" ? <Hero2 slug={page.slug} /> : null}
 {template === "Template 3" ? <Hero3 slug={page.slug} /> : null}
+{template === "Template 4" ? <Hero4 slug={page.slug} /> : null}
 {template === "Template 5" ? <Hero5 slug={page.slug} /> : null}
+{template === "Template 6" ? <Hero6 slug={page.slug} /> : null}

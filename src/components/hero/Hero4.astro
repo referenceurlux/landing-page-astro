@@ -1,0 +1,106 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const bandeau = page.acf.bandeau_hero;
+const color = page.acf.couleur_principale;
+---
+
+<section class="lg:h-screen w-full relative pt-38 lg:pt-24">
+  <div class="container mx-auto h-full flex items-center">
+    <div class="grid grid-cols-12 gap-4 pt-32 xl:pt-0">
+      <div class="col-span-12 lg:col-span-6 flex flex-col justify-center items-start mb-8 mg:mb-0">
+        <div
+          data-aos="fade-up"
+          class="text-3xl xl:text-6xl text-black uppercase z-3 font-bold font-montserrat mb-4"
+        >
+          <Fragment set:html={page.acf.titre_hero_4 ? page.acf.titre_hero_4 : null} />
+        </div>
+        <h4
+          class="font-montserrat font-medium uppercase text-[--primary-color] text-base xl:text-3xl mb-8"
+        >
+          {page.acf.accroche_hero_4 ? page.acf.accroche_hero_4 : null}
+        </h4>
+        <div class="font-montserrat text-base lg:text-lg mb-12 lg:w-4/5">
+          <Fragment set:html={page.acf.texte_hero_4 ? page.acf.texte_hero_4 : null} />
+        </div>
+        <a
+          data-aos="fade-up"
+          data-aos-delay="300"
+          class="bg-[--primary-color] font-montserrat text-white font-semibold text-sm lg:text-base py-4 px-16 rounded-xl transition-all z-3"
+          href="#contact">{page.acf.cta_hero_4 ? page.acf.cta_hero_4 : null}</a
+        >
+      </div>
+      <div class="col-span-12 lg:col-span-5 lg:col-end-13 background-hero-3  relative p-4 flex flex-col items-center gap-4">
+        <img
+          class="w-full h-full object-cover absolute top-0 left-0 -z-1 rounded-3xl"
+          src={page.acf.background_hero_4.url ? page.acf.background_hero_4.url : null}
+          alt={page.acf.background_hero_4.description ? page.acf.background_hero_4.description : null}
+        />
+        <form id="contactForm4" class="flex flex-wrap justify-between gap-4" action="" method="post">
+          <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
+          <input class="p-5 w-full xl:w-[48%] rounded-xl outline-none" type="text" name="nom" placeholder="Nom" id="nom">
+          <input class="p-5 w-full xl:w-[48%] rounded-xl outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom">
+          <input class="p-5 w-full xl:w-[48%] rounded-xl outline-none" type="email" name="email" placeholder="Email" id="email">
+          <input class="p-5 w-full xl:w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone">
+          <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="message" cols="30" rows="3" placeholder="Message"></textarea>
+          <button class="rounded-xl border-white bg-transparent backdrop-blur-sm border text-white font-semibold py-4 mx-auto px-12 mt-6 hover:bg-white hover:text-[--primary-color] transition-all" type="submit">Envoyer</button>
+        </form>
+        <svg class="hidden animate-spin loader -ml-1 mr-3 h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span class="uppercase text-[--primary-color] text-sm border-2 p-1 bg-white thanks-message hidden">Merci votre message a bien été envoyé</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Écoutez l'événement de soumission du formulaire
+  document
+    .getElementById("contactForm4")
+    ?.addEventListener("submit", function (event) {
+      event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
+      document.querySelector('.loader')?.classList.remove('hidden');
+      // Obtenez les valeurs des champs du formulaire
+      var nom = document.getElementById("nom").value;
+      var prenom = document.getElementById("prenom").value;
+      var email = document.getElementById("email").value;
+      var telephone = document.getElementById("telephone").value;
+      var message = document.getElementById("message").value;
+      var email_client = document.getElementById("email_client").value;
+
+      // Préparez les données à envoyer
+      var data = {
+        nom: nom,
+        prenom: prenom,
+        email: email,
+        telephone: telephone,
+        message: message,
+        email_client: email_client,
+      };
+
+      // Utilisez Email.js pour envoyer l'e-mail
+      emailjs
+        .send("service_tyiu5yu", "template_k81m95u", data)
+        .then(function (response) {
+          console.log("Email envoyé avec succès :", response);
+          // Réinitialisez les valeurs des champs après l'envoi
+          document.getElementById("nom").value = "";
+          document.getElementById("prenom").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("telephone").value = "";
+          document.getElementById("message").value = "";
+          document.getElementById("email_client").value = "";
+          document.querySelector('.loader')?.classList.add('hidden');
+          document.querySelector('.thanks-message')?.classList.remove('hidden');
+        })
+        .catch(function (error) {
+          console.log("Erreur lors de l'envoi de l'e-mail :", error);
+        });
+    });
+</script>

@@ -17,16 +17,22 @@ const page = await WordpressServices.getPageBySlug(slug);
         <h2 class="font-bold uppercase text-3xl lg:text-5xl mb-6">{page.acf.titre_contact_3 ? page.acf.titre_contact_3 : null}</h2>
         <p class="text-xs lg:text-lg">{page.acf.texte_contact_3 ? page.acf.texte_contact_3 : null}</p>
       </div>
-      <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat font-medium text-[--secondary-color]">
-        <form id="contactForm" class="flex flex-wrap justify-between gap-4" action="" method="post">
+      <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat font-medium flex flex-col gap-4">
+        <form id="contactForm3" class="flex flex-wrap justify-between gap-4" action="" method="post">
+          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
           <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
-          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="nom" placeholder="Nom" id="nom">
-          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom">
-          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="email" name="email" placeholder="Email" id="email">
-          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone">
-          <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="message" cols="30" rows="3" placeholder="Message"></textarea>
+          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="nom" placeholder="Nom" id="nom3">
+          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom3">
+          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="email" name="email" placeholder="Email" id="email3">
+          <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone3">
+          <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="message3" cols="30" rows="3" placeholder="Message"></textarea>
           <button class="rounded-xl border-white bg-transparent border text-white font-semibold py-4 px-12 mt-6 hover:bg-white hover:text-[--primary-color] transition-all" type="submit">Envoyer</button>
         </form>
+        <svg class=" animate-spin loader -ml-1 mr-3 h-5 w-5 text-white mx-auto hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span class="uppercase text-white text-sm border-2 p-1 thanks-message hidden w-fit">Merci votre message a bien été envoyé</span>
       </div>
     </div>
   </div>
@@ -34,15 +40,15 @@ const page = await WordpressServices.getPageBySlug(slug);
 
 <script>
   // Écoutez l'événement de soumission du formulaire
-  document.getElementById("contactForm").addEventListener("submit", function (event) {
+  document.getElementById("contactForm3")?.addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
-
+    document.querySelector('.loader')?.classList.remove('hidden');
     // Obtenez les valeurs des champs du formulaire
-    var nom = document.getElementById("nom").value;
-    var prenom = document.getElementById("prenom").value;
-    var email = document.getElementById("email").value;
-    var telephone = document.getElementById("telephone").value;
-    var message = document.getElementById("message").value;
+    var nom = document.getElementById("nom3").value;
+    var prenom = document.getElementById("prenom3").value;
+    var email = document.getElementById("email3").value;
+    var telephone = document.getElementById("telephone3").value;
+    var message = document.getElementById("message3").value;
     var email_client = document.getElementById("email_client").value;
 
     // Préparez les données à envoyer
@@ -59,6 +65,15 @@ const page = await WordpressServices.getPageBySlug(slug);
     emailjs.send("service_tyiu5yu", "template_k81m95u", data)
       .then(function (response) {
         console.log("Email envoyé avec succès :", response);
+         // Réinitialisez les valeurs des champs après l'envoi
+         document.getElementById("nom3").value = "";
+          document.getElementById("prenom3").value = "";
+          document.getElementById("email3").value = "";
+          document.getElementById("telephone3").value = "";
+          document.getElementById("message3").value = "";
+          document.getElementById("email_client").value = "";
+          document.querySelector('.loader')?.classList.add('hidden');
+          document.querySelector('.thanks-message')?.classList.remove('hidden');
       })
       .catch(function (error) {
         console.log("Erreur lors de l'envoi de l'e-mail :", error);

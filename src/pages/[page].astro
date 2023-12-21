@@ -12,6 +12,7 @@ import GalerieSwitcher from "../components/galerie/GalerieSwitcher.astro";
 import NumbersSwitcher from "../components/numbers/NumbersSwitcher.astro";
 import ContactSwitcher from "../components/contact/ContactSwitcher.astro";
 import FooterSwitcher from "../components/footer/FooterSwitcher.astro";
+
 // export async function getStaticPaths() {
 //   const menu = await WordpressServices.getPrimaryMenu();
 //   return menu.map((data) => {
@@ -47,13 +48,14 @@ const currentPage = await WordpressServices.getPageBySlug(page.slug);
 
 
 const clientName = currentPage.acf.nom_du_client;
+const ga4Id = currentPage.acf.ga4_id;
 
 // const template = currentPage.acf.template;
 
 if (!page) return Astro.redirect("/404");
 ---
 
-<Layout title={currentPage.slug} siteName={clientName}>
+<Layout title={currentPage.slug} siteName={clientName} ga4={ga4Id}>
   <Header slug={page.slug} />
   <HeroSwitcher slug={page.slug} />
   <ValeursSwitcher slug={page.slug} />

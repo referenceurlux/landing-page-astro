@@ -3,6 +3,7 @@ import { WordpressServices } from "../../data/wordpress";
 import Infos from "./Infos.astro";
 import Infos3 from "./Infos3.astro";
 import Infos5 from "./Infos5.astro";
+import Infos6 from "./Infos6.astro";
 interface Props {
   slug: string;
 }
@@ -13,3 +14,4 @@ const template = page.acf.template;
 {template === "Template 1" || template === "Template 2" ? <Infos slug={page.slug} /> : null}
 {template === "Template 3" || template === "Template 4" ? <Infos3 slug={page.slug} /> : null}
 {template === "Template 5" ? <Infos5 slug={page.slug} /> : null}
+{template === "Template 6" ? <Infos6 slug={page.slug} /> : null}

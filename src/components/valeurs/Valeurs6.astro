@@ -1,0 +1,63 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const valeurs = page.acf.liste_valeurs_6;
+---
+
+<section id="valeurs" class="pt-24 lg:pt-40">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-4 relative">
+      <div class="col-span-12 relative mb-16 font-montserrat text-center">
+        <span class="font-montserrat text-[--primary-color] uppercase">{page.acf.accroche_valeurs_6}</span>
+        <div class="text-2xl lg:text-5xl font-semibold mb-6 prose-strong:text-[--primary-color] prose-strong:font-semibold w-1/3 mx-auto">
+          <Fragment set:html={page.acf.titre_valeurs_6} />
+        </div>
+        <p class="text-sm lg:text-lg w-4/5 lg:w-1/2 text-center mx-auto">{page.acf.texte_valeurs_6 ? page.acf.texte_valeurs_6 : null}</p>
+      </div>
+      <div class="col-span-12 flex flex-col lg:flex-row justify-around gap-8 lg:gap-4 mb-24">
+        {valeurs ? valeurs.map((valeur) => (
+            <div class="font-montserrat flex gap-4 flex-col w-3/4 lg:w-1/4 justify-between items-center">
+              <div class="relative flex items-center w-fit">
+                <img
+                  class="object-cover"
+                  src={valeur.icone.url}
+                  alt={valeur.icone.description}
+                />
+                <div class="absolute w-6 h-6 bg-white rounded-full right-0 top-0 flex -translate-y-1/4 translate-x-1/4 justify-center items-center shadow-lg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11.784"
+                    height="7.996"
+                    viewBox="0 0 11.784 7.996"
+                    class="fill-[--primary-color]"
+                  >
+                    <path
+                      id="check-light_1_"
+                      data-name="check-light (1)"
+                      d="M11.712,96.172a.422.422,0,0,1,0,.595l-7.156,7.156a.422.422,0,0,1-.595,0L.172,100.135a.42.42,0,0,1,.595-.595l3.491,3.491,6.859-6.859A.422.422,0,0,1,11.712,96.172Z"
+                      transform="translate(-0.05 -96.05)"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="text-center mt-4">
+                <h5 class="font-semibold text-lg lg:text-2xl mb-4">{valeur.titre}</h5>
+                <span class="text-sm lg:text-base">{valeur.description}</span>
+              </div>
+            </div>
+          )) : null}
+      </div>
+      <div class="col-span-12 relative flex justify-center items-center p-5">
+        <div class="absolute w-1/3 h-0.5 bg-[--primary-color] top-0 right-0"></div>
+        <div class="absolute w-1/3 h-0.5 bg-[--primary-color] bottom-0 left-0"></div>
+        <div class="absolute h-1/3 w-0.5 bg-[--primary-color] bottom-0 left-0"></div>
+        <div class="absolute h-1/3 w-0.5 bg-[--primary-color] top-0 right-0"></div>
+        <img class="w-full h-auto object-cover" src={page.acf.bandeau_valeurs_6.url} alt={page.acf.bandeau_valeurs_6.description}>
+      </div>
+    </div>
+  </div>
+</section>

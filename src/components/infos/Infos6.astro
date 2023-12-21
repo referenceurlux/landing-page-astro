@@ -1,0 +1,71 @@
+---
+import { WordpressServices } from "../../data/wordpress";
+interface Props {
+  slug: string;
+}
+const {slug} = Astro.props;
+const page = await WordpressServices.getPageBySlug(slug);
+const responsabilites = page.acf.responsabilites;
+const competences = page.acf.competences;
+const missions = page.acf.missions;
+
+---
+
+<section id="infos" class="pt-24 lg:pt-40 pb-24">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-12 gap-4 relative">
+      <div class="col-span-12 relative mb-24 font-montserrat text-center">
+        <span class="font-montserrat text-[--primary-color] uppercase">{page.acf.accroche_infos_6}</span>
+        <div class="text-2xl lg:text-5xl font-semibold mb-6 prose-strong:text-[--primary-color] prose-strong:font-semibold w-1/4 mx-auto">
+          <Fragment set:html={page.acf.titre_infos_6} />
+        </div>
+        <p class="text-sm lg:text-lg w-4/5 lg:w-1/2 text-center mx-auto">{page.acf.texte_infos_6 ? page.acf.texte_infos_6 : null}</p>
+      </div>
+      {responsabilites.map((item) => (
+        <div class="lg:col-span-6 relative pt-16">
+          <img class="w-5/6 h-3/4 object-cover aspect-square" src={item.image_avant.url} alt={item.image_avant.description}>
+          <img class="absolute w-2/3 h-2/3 object-cover bottom-0 right-0 -z-1" src={item.image_arriere.url} alt={item.image_arriere.description}>
+        </div>
+        <div class="lg:col-span-5 lg:col-end-13 flex flex-col justify-center">
+          <div class="relative">
+            <span class="absolute top-0 left-0 -z-1 -translate-x-1/2 -translate-y-1/2 font-montserrat font-semibold text-7xl lg:text-9xl text-[--secondary-color]">01</span>
+            <h4 class="font-montserrat text-2xl lg:text-4xl font-semibold w-1/2 mb-8">{item.titre_responsabilites}</h4>
+          </div>
+          <div class="font-montserrat w-5/6 text-sm lg:text-lg prose-ul:list-disc prose-ul:list-outside prose-li:marker:text-[--primary-color] prose-ul:flex prose-ul:flex-col prose-ul:gap-8">
+            <Fragment set:html={item.texte_responsabilites} />  
+          </div> 
+        </div>
+      ))}
+      {competences.map((item) => (
+        <div class="lg:col-span-5 flex flex-col justify-center">
+          <div class="relative lg:translate-x-[10%]">
+            <span class="absolute top-0 left-0 -z-1 -translate-x-1/2 -translate-y-1/2 font-montserrat font-semibold text-7xl lg:text-9xl text-[--secondary-color]">02</span>
+            <h4 class="font-montserrat text-2xl lg:text-4xl font-semibold w-1/2 mb-8">{item.titre_competences}</h4>
+          </div>
+          <div class="font-montserrat w-5/6 text-sm lg:text-lg prose-ul:list-disc prose-ul:list-outside prose-li:marker:text-[--primary-color] prose-ul:flex prose-ul:flex-col prose-ul:gap-8">
+            <Fragment set:html={item.texte_competences} />  
+          </div> 
+        </div>
+        <div class="lg:col-span-6 lg:col-end-13 relative mt-32">
+          <img class="w-5/6 h-3/4 object-cover aspect-square" src={item.image_avant.url} alt={item.image_avant.description}>
+          <img class="absolute w-2/3 h-2/3 object-cover bottom-0 right-0 -z-1" src={item.image_arriere.url} alt={item.image_arriere.description}>
+        </div>
+      ))}
+      {missions.map((item) => (
+        <div class="lg:col-span-6 relative mt-32">
+          <img class="w-5/6 h-3/4 object-cover aspect-square" src={item.image_avant.url} alt={item.image_avant.description}>
+          <img class="absolute w-2/3 h-2/3 object-cover bottom-0 right-0 -z-1" src={item.image_arriere.url} alt={item.image_arriere.description}>
+        </div>
+        <div class="lg:col-span-5 lg:col-end-13 flex flex-col justify-center">
+          <div class="relative">
+            <span class="absolute top-0 left-0 -z-1 -translate-x-1/2 -translate-y-1/2 font-montserrat font-semibold text-7xl lg:text-9xl text-[--secondary-color]">03</span>
+            <h4 class="font-montserrat text-2xl lg:text-4xl font-semibold w-1/2 mb-8">{item.titre_missions}</h4>
+          </div>
+          <div class="font-montserrat w-5/6 text-sm lg:text-lg prose-ul:list-disc prose-ul:list-outside prose-li:marker:text-[--primary-color] prose-ul:flex prose-ul:flex-col prose-ul:gap-8">
+            <Fragment set:html={item.texte_missions} />  
+          </div> 
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

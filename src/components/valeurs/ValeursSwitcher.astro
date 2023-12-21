@@ -2,6 +2,7 @@
 import { WordpressServices } from "../../data/wordpress";
 import Valeurs from "./Valeurs.astro";
 import Valeurs5 from "./Valeurs5.astro";
+import Valeurs6 from "./Valeurs6.astro";
 interface Props {
   slug: string;
 }
@@ -12,3 +13,4 @@ const template = page.acf.template;
 
 {template === "Template 3" || template === "Template 4" ? <Valeurs slug={page.slug} /> : null}
 {template === "Template 5" ? <Valeurs5 slug={page.slug} /> : null}
+{template === "Template 6" ? <Valeurs6 slug={page.slug} /> : null}

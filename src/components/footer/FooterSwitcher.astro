@@ -3,6 +3,7 @@ import { WordpressServices } from "../../data/wordpress";
 import Footer from "./Footer.astro";
 import Footer3 from "./Footer3.astro";
 import Footer5 from "./Footer5.astro";
+import Footer6 from "./Footer6.astro";
 interface Props {
   slug: string;
 }
@@ -14,3 +15,4 @@ const template = page.acf.template;
 {template === "Template 1" || template === "Template 2" ? <Footer slug={page.slug} /> : null}
 {template === "Template 3" || template === "Template 4" ? <Footer3 slug={page.slug} /> : null}
 {template === "Template 5" ? <Footer5 slug={page.slug} /> : null}
+{template === "Template 6" ? <Footer6 slug={page.slug} /> : null}

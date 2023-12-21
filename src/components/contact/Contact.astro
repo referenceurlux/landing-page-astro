@@ -3,7 +3,7 @@ import { WordpressServices } from "../../data/wordpress";
 interface Props {
   slug: string;
 }
-const {slug} = Astro.props;
+const { slug } = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 
 // if (Astro.request.method === "POST") {
@@ -15,15 +15,13 @@ const page = await WordpressServices.getPageBySlug(slug);
 //     const phone = data.get("telephone");
 //     const message = data.get("message");
 //     console.log(name + ' ' + firstname + ' ' + email + ' ' + phone + ' ' + message);
-    
+
 //   } catch (error) {
 //     if (error instanceof Error) {
 //       console.error(error.message);
 //     }
 //   }
 // }
-
-
 ---
 
 <section id="contact" class="pt-20 pb-40 relative">
@@ -35,18 +33,33 @@ const page = await WordpressServices.getPageBySlug(slug);
     <div
       class="font-montserrat font-semibold text-2xl md:text-5xl text-center mb-20"
     >
-      <Fragment set:html={page.acf.petit_titre_contact ? page.acf.petit_titre_contact : null} />
+      <Fragment
+        set:html={page.acf.petit_titre_contact
+          ? page.acf.petit_titre_contact
+          : null}
+      />
     </div>
     <div>
-      <Fragment set:html={page.acf.shortcode_formulaire_contact ? page.acf.shortcode_formulaire_contact : null} />
+      <Fragment
+        set:html={page.acf.shortcode_formulaire_contact
+          ? page.acf.shortcode_formulaire_contact
+          : null}
+      />
     </div>
     <!-- <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 xl:col-span-6 xl:col-start-4">
         <iframe class="h-[900px] xl:h-[700px]" src="https://pages.lu/wordpress/contact/" frameborder="0" width="100%" height=""></iframe>
       </div>
     </div> -->
-    <form id="contactForm" name="contact" method="POST" data-netlify=true>
-      <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
+    <form id="contactForm" name="contact" method="POST" data-netlify="true">
+      <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
+      <input
+        hidden
+        type="email"
+        name="email_client"
+        id="email_client"
+        value={page.acf.email}
+      />
       <div class="grid grid-cols-12 gap-4 font-montserrat font-semibold">
         <div class="col-span-12 lg:col-span-3 lg:col-start-4">
           <input
@@ -97,11 +110,19 @@ const page = await WordpressServices.getPageBySlug(slug);
             rows="5"
             required></textarea>
         </div>
-        <div class="col-span-12 lg:col-span-2 lg:col-start-6 mt-16">
+        <div class="col-span-12 lg:col-span-2 lg:col-start-6 mt-16 flex flex-col items-center gap-8">
           <button
-            class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn"
+            class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn flex justify-center gap-4"
             type="submit"
-            value="Envoyer">Envoyer</button>
+            value="Envoyer">Envoyer</button
+          >
+          <svg class="hidden animate-spin loader -ml-1 mr-3 h-5 w-5 text-[--primary-color]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+        <div class="col-span-12 mx-auto mt-8 thanks-message hidden">
+          <span class="uppercase border-4 border-[--primary-color] text-sm p-1">Merci votre message a bien été envoyé</span>
         </div>
       </div>
     </form>
@@ -110,34 +131,46 @@ const page = await WordpressServices.getPageBySlug(slug);
 
 <script>
   // Écoutez l'événement de soumission du formulaire
-  document.getElementById("contactForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
+  document
+    .getElementById("contactForm")
+    ?.addEventListener("submit", function (event) {
+      event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
+      document.querySelector('.loader')?.classList.remove('hidden');
+      // Obtenez les valeurs des champs du formulaire
+      var nom = document.getElementById("nom").value;
+      var prenom = document.getElementById("prenom").value;
+      var email = document.getElementById("email").value;
+      var telephone = document.getElementById("telephone").value;
+      var message = document.getElementById("message").value;
+      var email_client = document.getElementById("email_client").value;
 
-    // Obtenez les valeurs des champs du formulaire
-    var nom = document.getElementById("nom").value;
-    var prenom = document.getElementById("prenom").value;
-    var email = document.getElementById("email").value;
-    var telephone = document.getElementById("telephone").value;
-    var message = document.getElementById("message").value;
-    var email_client = document.getElementById("email_client").value;
+      // Préparez les données à envoyer
+      var data = {
+        nom: nom,
+        prenom: prenom,
+        email: email,
+        telephone: telephone,
+        message: message,
+        email_client: email_client,
+      };
 
-    // Préparez les données à envoyer
-    var data = {
-      nom: nom,
-      prenom: prenom,
-      email: email,
-      telephone: telephone,
-      message: message,
-      email_client: email_client
-    };
-
-    // Utilisez Email.js pour envoyer l'e-mail
-    emailjs.send("service_tyiu5yu", "template_k81m95u", data)
-      .then(function (response) {
-        console.log("Email envoyé avec succès :", response);
-      })
-      .catch(function (error) {
-        console.log("Erreur lors de l'envoi de l'e-mail :", error);
-      });
-  });
+      // Utilisez Email.js pour envoyer l'e-mail
+      emailjs
+        .send("service_tyiu5yu", "template_k81m95u", data)
+        .then(function (response) {
+          console.log("Email envoyé avec succès :", response);
+          // Réinitialisez les valeurs des champs après l'envoi
+          document.getElementById("nom").value = "";
+          document.getElementById("prenom").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("telephone").value = "";
+          document.getElementById("message").value = "";
+          document.getElementById("email_client").value = "";
+          document.querySelector('.loader')?.classList.add('hidden');
+          document.querySelector('.thanks-message')?.classList.remove('hidden');
+        })
+        .catch(function (error) {
+          console.log("Erreur lors de l'envoi de l'e-mail :", error);
+        });
+    });
 </script>
