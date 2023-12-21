@@ -48,6 +48,7 @@ const color = page.acf.couleur_principale;
           <input class="p-5 w-full xl:w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone">
           <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="message" cols="30" rows="3" placeholder="Message"></textarea>
           <button class="rounded-xl border-white bg-transparent backdrop-blur-sm border text-white font-semibold py-4 mx-auto px-12 mt-6 hover:bg-white hover:text-[--primary-color] transition-all" type="submit">Envoyer</button>
+          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
         </form>
         <svg class="hidden animate-spin loader -ml-1 mr-3 h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -73,7 +74,7 @@ const color = page.acf.couleur_principale;
       var telephone = document.getElementById("telephone").value;
       var message = document.getElementById("message").value;
       var email_client = document.getElementById("email_client").value;
-
+      var recaptchaResponse = grecaptcha.getResponse();
       // Préparez les données à envoyer
       var data = {
         nom: nom,
@@ -82,6 +83,7 @@ const color = page.acf.couleur_principale;
         telephone: telephone,
         message: message,
         email_client: email_client,
+        "g-recaptcha-response": recaptchaResponse
       };
 
       // Utilisez Email.js pour envoyer l'e-mail

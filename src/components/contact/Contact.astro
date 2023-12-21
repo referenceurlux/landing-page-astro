@@ -52,7 +52,6 @@ const page = await WordpressServices.getPageBySlug(slug);
       </div>
     </div> -->
     <form id="contactForm" name="contact" method="POST" data-netlify="true">
-      <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
       <input
         hidden
         type="email"
@@ -111,6 +110,7 @@ const page = await WordpressServices.getPageBySlug(slug);
             required></textarea>
         </div>
         <div class="col-span-12 lg:col-span-2 lg:col-start-6 mt-16 flex flex-col items-center gap-8">
+          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
           <button
             class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn flex justify-center gap-4"
             type="submit"
@@ -143,7 +143,7 @@ const page = await WordpressServices.getPageBySlug(slug);
       var telephone = document.getElementById("telephone").value;
       var message = document.getElementById("message").value;
       var email_client = document.getElementById("email_client").value;
-
+      var recaptchaResponse = grecaptcha.getResponse();
       // Préparez les données à envoyer
       var data = {
         nom: nom,
@@ -152,6 +152,7 @@ const page = await WordpressServices.getPageBySlug(slug);
         telephone: telephone,
         message: message,
         email_client: email_client,
+        "g-recaptcha-response": recaptchaResponse
       };
 
       // Utilisez Email.js pour envoyer l'e-mail

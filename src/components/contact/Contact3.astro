@@ -19,7 +19,6 @@ const page = await WordpressServices.getPageBySlug(slug);
       </div>
       <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat font-medium flex flex-col gap-4">
         <form id="contactForm3" class="flex flex-wrap justify-between gap-4" action="" method="post">
-          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
           <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
           <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="nom" placeholder="Nom" id="nom3">
           <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom3">
@@ -27,6 +26,7 @@ const page = await WordpressServices.getPageBySlug(slug);
           <input class="p-5 w-full lg:w-[48%] rounded-xl outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone3">
           <textarea class="p-5 rounded-xl outline-none w-full" name="message" id="message3" cols="30" rows="3" placeholder="Message"></textarea>
           <button class="rounded-xl border-white bg-transparent border text-white font-semibold py-4 px-12 mt-6 hover:bg-white hover:text-[--primary-color] transition-all" type="submit">Envoyer</button>
+          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
         </form>
         <svg class=" animate-spin loader -ml-1 mr-3 h-5 w-5 text-white mx-auto hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
