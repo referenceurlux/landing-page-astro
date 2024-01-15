@@ -18,7 +18,7 @@ const template = page.acf.template;
   <div class="container mx-auto">
     <nav class="flex justify-between items-center">
       <a class="z-10" href=`/${slug}`>
-        <img src={logo.url ? logo.url : null} alt={logo.description ? logo.description : null} />
+        <img class="w-32 lg:w-64" src={logo.url ? logo.url : null} alt={logo.description ? logo.description : null} />
       </a>
       <ul class={`gap-8 ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'hidden xl:flex'} `}>
         <!-- {
@@ -45,7 +45,7 @@ const template = page.acf.template;
         </li>
       </ul>
       <a
-        class={`bg-[--primary-color] text-white font-semibold py-4 px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'hidden xl:block'} transition-all`}
+        class={`bg-[--primary-color] text-xs lg:text-base text-white font-semibold py-2 px-4 lg:py-4 lg:px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'block'} transition-all`}
         href=`tel:${phone ? phone : null}`>{phone ? phone : null}</a
       >
       <a
