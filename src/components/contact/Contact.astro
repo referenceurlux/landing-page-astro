@@ -110,7 +110,7 @@ const page = await WordpressServices.getPageBySlug(slug);
             required></textarea>
         </div>
         <div class="col-span-12 lg:col-span-2 lg:col-start-6 flex flex-col items-center gap-8">
-          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
+          <div class="g-recaptcha" data-sitekey="{page.acf.sitekey}"></div>
           <button
             class="bg-[--primary-color] py-4 w-full text-white rounded-full sendBtn flex justify-center gap-4"
             type="submit"
