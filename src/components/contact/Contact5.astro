@@ -85,13 +85,13 @@ const page = await WordpressServices.getPageBySlug(slug);
       <div class="col-span-12 lg:col-span-5 lg:col-end-12 z-1 font-montserrat flex flex-col gap-4 justify-center font-medium text-[--secondary-color] order-1 lg:order-2 mb-20 lg:mb-0">
         <form id="contactForm5" class="flex flex-wrap justify-center lg:justify-between gap-4" action="" method="post">
           <input hidden type="email" name="email_client" id="email_client" value={page.acf.email}>
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="nom" placeholder="Nom" id="nom5">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="text" name="prenom" placeholder="Prénom" id="prenom5">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="email" name="email" placeholder="Email" id="email5">
-          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none" type="tel" name="telephone" placeholder="Téléphone" id="telephone5">
-          <textarea class="py-5 px-8 rounded-3xl outline-none w-full" name="message" id="message5" cols="30" rows="3" placeholder="Message"></textarea>
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none text-[--secondary-color]" type="text" name="nom" placeholder="Nom" id="nom5">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none text-[--secondary-color]" type="text" name="prenom" placeholder="Prénom" id="prenom5">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none text-[--secondary-color]" type="email" name="email" placeholder="Email" id="email5">
+          <input class="py-5 px-8 w-full lg:w-[48%] rounded-full outline-none text-[--secondary-color]" type="tel" name="telephone" placeholder="Téléphone" id="telephone5">
+          <textarea class="py-5 px-8 rounded-3xl outline-none w-full text-[--secondary-color]" name="message" id="message5" cols="30" rows="3" placeholder="Message"></textarea>
           <button class="rounded-full border-2 border-[--primary-color] bg-transparent text-[--primary-color] font-semibold py-4 px-12 mt-6 hover:bg-[--primary-color] hover:text-white transition-all" type="submit">Envoyer</button>
-          <div class="g-recaptcha" data-sitekey="6LcnmjgpAAAAAFWcAiOiGag-0LGIEFKdaFPjJ-Vc"></div>
+          <div class="g-recaptcha" data-sitekey={page.acf.sitekey}></div>
         </form>
         <svg class="hidden animate-spin loader -ml-1 mr-3 h-5 w-5 text-[--primary-color]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
