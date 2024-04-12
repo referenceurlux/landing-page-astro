@@ -1,6 +1,6 @@
 import * as adapter from '@astrojs/netlify/netlify-functions.js';
 import { renderers } from './renderers.mjs';
-import { manifest } from './manifest_33300cf5.mjs';
+import { manifest } from './manifest_93718031.mjs';
 import 'cookie';
 import 'kleur/colors';
 import 'string-width';

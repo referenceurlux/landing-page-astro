@@ -106,6 +106,7 @@ const page = await WordpressServices.getPageBySlug(slug);
 
 <script>
   // Écoutez l'événement de soumission du formulaire
+  var email_template = document.getElementById("email_template").value;
   document.getElementById("contactForm5")?.addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche l'envoi du formulaire traditionnel
     document.querySelector('.loader')?.classList.remove('hidden');
@@ -116,7 +117,7 @@ const page = await WordpressServices.getPageBySlug(slug);
     var telephone = document.getElementById("telephone5").value;
     var message = document.getElementById("message5").value;
     var email_client = document.getElementById("email_client").value;
-    var email_template = document.getElementById("email_template").value;
+    
     var recaptchaResponse = grecaptcha.getResponse();
     // Préparez les données à envoyer
     var data = {
