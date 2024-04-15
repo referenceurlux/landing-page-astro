@@ -1,6 +1,6 @@
 import * as adapter from '@astrojs/netlify/netlify-functions.js';
 import { renderers } from './renderers.mjs';
-import { manifest } from './manifest_0e4ca698.mjs';
+import { manifest } from './manifest_dcd1a128.mjs';
 import 'cookie';
 import 'kleur/colors';
 import 'string-width';
@@ -11,8 +11,8 @@ import 'mime';
 import 'path-to-regexp';
 
 const _page0  = () => import('./chunks/generic_85241e0b.mjs');
-const _page1  = () => import('./chunks/index_b30f06f2.mjs');
-const _page2  = () => import('./chunks/_page__e2d5e6f0.mjs');const pageMap = new Map([["node_modules/astro/dist/assets/endpoint/generic.js", _page0],["src/pages/index.astro", _page1],["src/pages/[page].astro", _page2]]);
+const _page1  = () => import('./chunks/index_e501a894.mjs');
+const _page2  = () => import('./chunks/_page__90cb986c.mjs');const pageMap = new Map([["node_modules/astro/dist/assets/endpoint/generic.js", _page0],["src/pages/index.astro", _page1],["src/pages/[page].astro", _page2]]);
 const _manifest = Object.assign(manifest, {
 	pageMap,
 	renderers,

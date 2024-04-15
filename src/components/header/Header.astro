@@ -10,7 +10,8 @@ const { slug } = Astro.props;
 const page = await WordpressServices.getPageBySlug(slug);
 
 const logo = page.acf.logo_de_la_landing_page;
-const phone = page.acf.telephone;
+const titre_cta = page.acf.titre_cta_header;
+const lien_cta = page.acf.lien_cta_header;
 const template = page.acf.template;
 ---
 
@@ -44,10 +45,10 @@ const template = page.acf.template;
           <a href=#contact>Contact</a>
         </li>
       </ul>
-      {phone ?
+      {titre_cta ?
        <a
         class={`bg-[--primary-color] text-xs lg:text-base text-white font-semibold py-2 px-4 lg:py-4 lg:px-8 ${template === 'Template 1' || template === 'Template 2' || template === 'Template 5' ? 'rounded-full' : 'rounded-xl'} ${template === 'Template 6' || template === 'Template 7' ? 'hidden' : 'block'} transition-all`}
-        href=`tel:${phone ? phone : null}`>{phone ? phone : null}</a
+        href={lien_cta}>{titre_cta}</a
       >
       :
       null
