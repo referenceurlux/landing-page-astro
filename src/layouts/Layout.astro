@@ -14,6 +14,7 @@ const page = await WordpressServices.getPageBySlug(title);
 const primaryColor = page.acf.couleur_principale;
 const secondaryColor = page.acf.couleur_secondaire;
 const ga4Head = page.acf.ga4_id;
+const description = page.acf.description;
 console.log(ga4);
 
 ---
@@ -41,7 +42,7 @@ console.log(ga4);
 	</script>
 	<!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
