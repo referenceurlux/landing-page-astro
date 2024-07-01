@@ -13,9 +13,10 @@ const logo = page.acf.logo_de_la_landing_page;
 const titre_cta = page.acf.titre_cta_header;
 const lien_cta = page.acf.lien_cta_header;
 const template = page.acf.template;
+const nom_client = page.acf.nom_du_client;
 ---
 
-<header class={`py-4 fixed w-full ${template === 'Template 6' || template === 'Template 7' ? 'bg-transparent' : 'bg-white'}  z-10  font-montserrat`}>
+<header class={`py-4 fixed w-full ${nom_client} ${template === 'Template 6' || template === 'Template 7' ? 'bg-transparent' : 'bg-white'}  z-10  font-montserrat`}>
   <div class="container mx-auto">
     <nav class="flex justify-between items-center">
       <a class="z-10" href=`/${slug}`>
