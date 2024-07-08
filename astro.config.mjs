@@ -11,5 +11,8 @@ export default defineConfig({
   site: 'https://pg.pages.lu',
   integrations: [tailwind(), robotsTxt()],
   output: 'server',
-  adapter: netlify()
+  adapter: netlify(),
+  redirects: {
+    'pages/[page].astro' : '/'
+  }
 });
