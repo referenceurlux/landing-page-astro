@@ -45,7 +45,7 @@ console.log(ga4);
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={favicon.url} />
+    <link rel="icon" type="image/svg+xml" href={favicon ? favicon.url : ''} />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>{siteName}</title>
   </head>
