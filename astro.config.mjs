@@ -12,7 +12,4 @@ export default defineConfig({
   integrations: [tailwind(), robotsTxt()],
   output: 'server',
   adapter: netlify(),
-  redirects: {
-    '/cebe-fit' : '/lernestine'
-  }
 });
