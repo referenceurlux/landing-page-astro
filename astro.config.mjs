@@ -13,6 +13,6 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   redirects: {
-    'pages/[page].astro' : '/'
+    '/cebe-fit' : '/cebefit-test'
   }
 });
