@@ -13,6 +13,6 @@ export default defineConfig({
   output: 'server',
   adapter: netlify(),
   redirects: {
-    '/cebe-fit' : '/cebefit-test'
+    '/cebe-fit' : '/lernestine'
   }
 });
